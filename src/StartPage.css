@@ -1,0 +1,39 @@
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+     }
+    ::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+      }
+    /* optional: show position indicator in red */
+    ::-webkit-scrollbar-thumb {
+    background: #FF0000;
+     }
+  
+
+.mainTitle
+{
+    font-family: serif;
+    font-size: 1.6875rem;
+    line-height: 1.875rem;
+    letter-spacing: 0;
+    text-align: center;
+    text-transform: uppercase;
+    color: #001446;
+}
+.titleUnderline{
+    width: 34.875rem;
+    border-bottom: 1px solid rgba(0,20,70,.2);
+    margin: 1.25rem auto;
+    display: block;
+}
+
+.mainTitleText
+{
+    margin-left: 300px;
+    margin-right: 300px;
+    text-align: center;
+    font-family:  Garamond, serif;
+    font-size: 1.2rem;
+}
