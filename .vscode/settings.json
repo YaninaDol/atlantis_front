@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "undefined/subscriptions/222eb8ba-4bcb-4da1-94cb-4a6903edbced/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/atlantisFront",
+    "appService.deploySubpath": "."
+}
