@@ -1,4 +1,5 @@
 import React from 'react';
+import Carousel from 'react-bootstrap/Carousel';
 import {
   MDBCard,
   MDBCardImage,
@@ -10,7 +11,7 @@ import {
 } from 'mdb-react-ui-kit';
   import { Component } from "react";
 
-  class showRoomItem extends Component{
+  class showRoomsItem extends Component{
     constructor(props){
         super(props);
     }
@@ -18,12 +19,41 @@ import {
     render()
     {
         return(
-            <MDBCard shadow='0' border='warning' background='white' className='mb-3'>
-            <MDBCardHeader>this.props.header</MDBCardHeader>
+            <MDBCard shadow='0' style={{width:400,marginLeft:20}} border='warning' background='white' >
+            <MDBCardHeader>{this.props.header}</MDBCardHeader>
             <MDBCardBody>
-            <MDBCardImage src='https://mdbootstrap.com/img/new/standard/city/041.webp' alt='...' position='top' />
+            <Carousel  >
+      <Carousel.Item>
+        <img
+       
+        height={220}
+          className="d-block w-100"
+          src={this.props.pic1}
+          alt="First slide"
+        />
+         </Carousel.Item>
+         <Carousel.Item>
+        <img
+          
+          height={220}
+          className="d-block w-100"
+          src={this.props.pic2}
+          alt="Second slide"
+        />
+         </Carousel.Item>
+         <Carousel.Item>
+        <img
+          
+          height={220}
+          className="d-block w-100"
+          src={this.props.pic3}
+          alt="Third slide"
+        />
+         </Carousel.Item>
+
+         </Carousel>
               <MDBCardText>
-                Some quick example text to build on the card title and make up the bulk of the card's content.
+                {this.props.text}
               </MDBCardText>
             </MDBCardBody>
           </MDBCard>
@@ -31,4 +61,4 @@ import {
     }
 }
 
-export default showRoomItem;
+export default showRoomsItem;

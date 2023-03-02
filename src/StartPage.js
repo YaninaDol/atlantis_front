@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import showRoomItem from './showRoomsItem';
+import ShowRoomItem from './showRoomsItem';
 import {
 
     MDBNavbarNav,
@@ -230,7 +230,13 @@ This is Atlantis The Royal.
 
 
     </div>
-  
+ 
+  <div className='cartContainer'>
+ <ShowRoomItem header='SIGNATURE SUITES' pic1='https://www.atlantis.com/scropper/-/screen/992/atlantis/dubai/tra/rooms/tra-interior-roomsrender.jpg' pic2='https://www.atlantis.com/scropper/-/screen/1200/atlantis/dubai/tra/rooms/atlantistheroyal-royalclub-interior-bathrooms.jpg' pic3='https://www.atlantis.com/scropper/-/screen/992/atlantis/dubai/tra/rooms/atlantistheroyal-interior-royalclub-royalclubsealounge.jpg' text='Experience a rare kind of luxury unlike anywhere else, with expansive terraces decked with private pools and bedrooms made for royalty. Wake into a world of impossibilities made possible.'></ShowRoomItem>
+ <ShowRoomItem header='FAMILY APARTMENTS' pic1='https://www.atlantis.com/scropper/-/screen/1920/atlantis/dubai/tra/rooms/atlantistheroyal-suites-interior-skyterracesuite.jpg' pic2='https://www.atlantis.com/scropper/-/screen/1920/atlantis/dubai/tra/rooms/tra-interior-skyterracesuite-bathroom.jpg' pic3='https://www.atlantis.com/scropper/-/screen/992/atlantis/dubai/tra/rooms/atlantistheroyal-interior-royalclub-royalclubsealounge.jpg' text='The interconnecting Family Room is the perfect space for a group or family of up to four, complete with one king and two queen beds. Each bedroom features an en-suite bathroom, walk-in wardrobe and private balcony delivering endless views across the Palm Island or the Arabian Sea.'></ShowRoomItem>
+ <ShowRoomItem header='ROYAL VILLAS' pic1='https://www.atlantis.com/scropper/-/screen/768/atlantis/dubai/atr/atlantis-the-royal/rooms-suites/suites/sky-pool-villa/interior/atr-sky-pool-villa-terrace-day.jpg' pic2='https://www.atlantis.com/scropper/-/screen/768/atlantis/dubai/atr/atlantis-the-royal/rooms-suites/suites/sky-pool-villa/interior/atr-sky-pool-villa-interior-bedroom.jpg' pic3='https://www.atlantis.com/scropper/-/screen/768/atlantis/dubai/atr/atlantis-the-royal/rooms-suites/suites/sky-pool-villa/interior/atr-sky-pool-villa-interior-bathroom.jpg' text='This dream-worthy Suite features an expansive terrace with outdoor seating for dining al fresco from morning to night, a private infinity pool and dining area.'></ShowRoomItem>
+
+  </div>
             </div>
       )
 }
