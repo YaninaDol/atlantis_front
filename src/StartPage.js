@@ -3,7 +3,9 @@ import React, { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 import ShowRoomItem from './showRoomsItem';
+import axios from 'axios';
 import {
 
     MDBNavbarNav,
@@ -31,14 +33,165 @@ export default function StartPage(){
     const [endDate, setEndDate] = useState(Date.now());
     const [adult, setAdult] = useState(0);
     const [children, setChildren] = useState(0);
+    const [isLogin, setIsLogin] = useState(false);
+    const [login, setLogin] = useState("");
+    const [pass1, setPass1] = useState("");
+    const [pass2, setPass2] = useState("");
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+   
+    const [registerData, setRegisterData] = useState({login: '', email: '', password: '', confirmPassword: '' });
+  
+  
+
+   
+    const [nameLogin, setnameLogin] = useState("Login");
+
+  function loginbtn()
+  {
+    if(nameLogin!="Logout")
+    {
+      handleShow();
+      setnameLogin("Logout");
+    }
+    else
+    {
+      setnameLogin("Login");
+      window.sessionStorage.clear();
+    }
+
+  }
+
+  function SubmitLogIn() 
+  {
+     
+      if(pass1==pass2)
+      {
+         
+      
+              axios (
+
+                  {
+                      method:'post',
+                      url:'https://webapplicationatlantis20230228203434.azurewebsites.net/api/Authenticate/login',
+                      data:
+                      JSON.stringify({ UserName:login, Password: pass1}),
+                      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }
+
+                  }
 
 
 
+              ).then  (res=>
+
+                      
+                      {
+                         
+                            //  console.log(res.data.userRole[0]);
+                            //  console.log(res.data.token);
+                         
+                              window.sessionStorage.setItem("AccessToken", res.data.token);
+                              window.sessionStorage.setItem("UserId", res.data.userId);
+                            setIsLogin(true);
+                             if(res.data.userRole[0]=="User")
+
+                             {
+                                             
+                            //  window.location.href = "/";
+                            setnameLogin("Logout");
+                          
+                               console.log(res.data.userRole[0]);
+                              console.log(res.data.token);
+                              handleClose();
+
+                             }
+
+                             if(res.data.userRole[0]=="Admin")
+                             {
+                             
+                            ///  window.location.href = "/producttable";
+                             }
+
+
+                      })
+                      .catch(function (error) {
+                          alert("Error password or email");
+                          window.location.href = "/";
+                          setIsLogin(false);
+                          console.log("Error:"+error);
+                        });
+                      
+                      
+                      ;
+
+      }
+      else
+      {
+         
+          alert("Erorr confirm password!");
+      }
+
+  };
 
 
     return(
             <div>
             
+
+            <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Login/Register</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form >
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label>Login</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter Login"
+                name="login"
+                onChange={(e)=>setLogin(e.target.value)}
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formBasicPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Enter password"
+                name="password"
+               
+                onChange={(e)=>setPass1(e.target.value)}   
+              />
+            </Form.Group>
+            <Form.Group controlId="formBasicPassword">
+              <Form.Label>Confirm password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Repeat Password"
+                name="repeat password"
+               
+                onChange={(e)=>setPass2(e.target.value)}   
+              />
+            </Form.Group>
+            <Form.Group controlId="formBasicPassword">
+              <Form.Label onClick={()=>alert('hello')}>Forgot password?</Form.Label>
+            
+            </Form.Group>
+
+
+            <Button variant="dark" onClick={SubmitLogIn} >
+              Submit
+            </Button>
+          </Form>
+          </Modal.Body>
+          </Modal>
+
+
+
+
             <header   style={{marginTop:110}}>
       <MDBNavbar    expand='lg' >
         <MDBContainer  className='Headercss' fluid>
@@ -58,7 +211,7 @@ export default function StartPage(){
                 </MDBNavbarLink>
               </MDBNavbarItem>
               <MDBNavbarItem>
-                <MDBNavbarLink style={{color:'navy'}} href='#'>Login</MDBNavbarLink>
+                <MDBNavbarLink style={{color:'navy'}} onClick={loginbtn}>{nameLogin}</MDBNavbarLink>
               </MDBNavbarItem>
               <MDBNavbarItem>
                 <MDBNavbarLink style={{color:'navy'}} href='#'>News</MDBNavbarLink>
@@ -254,7 +407,7 @@ This is Atlantis The Royal.
     </div>
  
   <div className='cartContainer'>
- <ShowRoomItem header='SIGNATURE SUITES' pic1='https://www.atlantis.com/scropper/-/screen/992/atlantis/dubai/tra/rooms/tra-interior-roomsrender.jpg' pic2='https://www.atlantis.com/scropper/-/screen/1200/atlantis/dubai/tra/rooms/atlantistheroyal-royalclub-interior-bathrooms.jpg' pic3='https://www.atlantis.com/scropper/-/screen/992/atlantis/dubai/tra/rooms/atlantistheroyal-interior-royalclub-royalclubsealounge.jpg' text='Experience a rare kind of luxury unlike anywhere else, with expansive terraces decked with private pools and bedrooms made for royalty. Wake into a world of impossibilities made possible.'></ShowRoomItem>
+ <ShowRoomItem header='SIGNATURE SUITES' pic1='https://www.atlantis.com/scropper/-/screen/992/atlantis/dubai/tra/rooms/tra-interior-roomsrender.jpg' pic2='https://www.atlantis.com/scropper/-/screen/992/atlantis/dubai/tra/rooms/atlantistheroyal-interior-royalclub-royalclubsealounge.jpg' pic3='https://www.atlantis.com/scropper/-/screen/992/atlantis/dubai/tra/rooms/atlantistheroyal-royalclub-interior-bathrooms.jpg' text='Experience a rare kind of luxury unlike anywhere else, with expansive terraces decked with private pools and bedrooms made for royalty. Wake into a world of impossibilities made possible.'></ShowRoomItem>
  <ShowRoomItem header='FAMILY APARTMENTS' pic1='https://www.atlantis.com/scropper/-/screen/1920/atlantis/dubai/tra/rooms/atlantistheroyal-suites-interior-skyterracesuite.jpg' pic2='https://www.atlantis.com/scropper/-/screen/1920/atlantis/dubai/tra/rooms/tra-interior-skyterracesuite-bathroom.jpg' pic3='https://www.atlantis.com/scropper/-/screen/992/atlantis/dubai/tra/rooms/atlantistheroyal-interior-royalclub-royalclubsealounge.jpg' text='The interconnecting Family Room is the perfect space for a group or family of up to four, complete with one king and two queen beds. Each bedroom features an en-suite bathroom, walk-in wardrobe and private balcony delivering endless views across the Palm Island or the Arabian Sea.'></ShowRoomItem>
  <ShowRoomItem header='ROYAL VILLAS' pic1='https://www.atlantis.com/scropper/-/screen/768/atlantis/dubai/atr/atlantis-the-royal/rooms-suites/suites/sky-pool-villa/interior/atr-sky-pool-villa-terrace-day.jpg' pic2='https://www.atlantis.com/scropper/-/screen/768/atlantis/dubai/atr/atlantis-the-royal/rooms-suites/suites/sky-pool-villa/interior/atr-sky-pool-villa-interior-bedroom.jpg' pic3='https://www.atlantis.com/scropper/-/screen/768/atlantis/dubai/atr/atlantis-the-royal/rooms-suites/suites/sky-pool-villa/interior/atr-sky-pool-villa-interior-bathroom.jpg' text='This dream-worthy Suite features an expansive terrace with outdoor seating for dining al fresco from morning to night, a private infinity pool and dining area.'></ShowRoomItem>
 
