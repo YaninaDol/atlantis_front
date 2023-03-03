@@ -6,6 +6,7 @@ import {
   MDBCardTitle,
   MDBCardText,
   MDBCardBody,
+  MDBBtn,
   MDBCardHeader,
   MDBCardFooter
 } from 'mdb-react-ui-kit';
@@ -55,7 +56,11 @@ import {
               <MDBCardText>
                 {this.props.text}
               </MDBCardText>
+           
             </MDBCardBody>
+            <MDBBtn className='bookbtn' href='#booking' lg color='light' style={{color:'DarkGoldenRod'}}>
+        Book Now
+      </MDBBtn>
           </MDBCard>
         );
     }
