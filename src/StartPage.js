@@ -35,17 +35,16 @@ export default function StartPage(){
     const [children, setChildren] = useState(0);
     const [isLogin, setIsLogin] = useState(false);
     const [login, setLogin] = useState("");
+    const [email, setEmail] = useState("");
     const [pass1, setPass1] = useState("");
     const [pass2, setPass2] = useState("");
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-   
-    const [registerData, setRegisterData] = useState({login: '', email: '', password: '', confirmPassword: '' });
-  
-  
 
+    const [loginhidden, setLoginhidden] = useState("");
+    const [signinhidden, setSigninhidden] = useState("hidden");
    
     const [nameLogin, setnameLogin] = useState("Login");
 
@@ -54,12 +53,17 @@ export default function StartPage(){
     if(nameLogin!="Logout")
     {
       handleShow();
-      setnameLogin("Logout");
+     
     }
     else
     {
+
+      setIsLogin(false);
+
       setnameLogin("Login");
+      
       window.sessionStorage.clear();
+      alert("See you next time");
     }
 
   }
@@ -135,6 +139,62 @@ export default function StartPage(){
 
   };
 
+  function SubmitSignIn() 
+    {
+   
+        if(pass1==pass2)
+        {
+                
+        
+                axios (
+
+                    {
+                        method:'post',
+                        url:'https://webapplicationatlantis20230228203434.azurewebsites.net/api/Authenticate/regUser',
+                        data:
+                        JSON.stringify({ UserName:login, Password: pass1,Email:email }),
+                        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }
+
+                    }
+
+
+
+                ).then  (res=>
+                        {
+                                console.log(res.data);
+                                alert("You sing in success!")
+                               window.location.reload();
+                        });
+
+        }
+        else
+        {
+            alert("Erorr!");
+        }
+       
+        
+       
+  
+     
+    }
+
+
+    function checkavailablebtn()
+    
+    {
+  if(isLogin!=false)
+  {
+
+
+  }
+  else
+  {
+    //alert("You are not login!");
+    handleShow();
+  }
+
+
+      }
 
     return(
             <div>
@@ -145,7 +205,7 @@ export default function StartPage(){
           <Modal.Title>Login/Register</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form >
+          <Form hidden={loginhidden}>
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Login</Form.Label>
               <Form.Control
@@ -182,10 +242,64 @@ export default function StartPage(){
             </Form.Group>
 
 
-            <Button variant="dark" onClick={SubmitLogIn} >
+            <Button  variant="dark" onClick={SubmitLogIn} >
               Submit
             </Button>
+            <Button style={{marginLeft:300}} variant="warning" onClick={()=>{setLoginhidden("hidden");setSigninhidden("")}} >
+              Sign in
+            </Button>
           </Form>
+
+          <Form hidden={signinhidden}>
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label>Login</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter Login"
+                name="login"
+                onChange={(e)=>setLogin(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Enter Email"
+                name="email"
+                onChange={(e)=>setEmail(e.target.value)}
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formBasicPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Enter password"
+                name="password"
+               
+                onChange={(e)=>setPass1(e.target.value)}   
+              />
+            </Form.Group>
+            <Form.Group controlId="formBasicPassword">
+              <Form.Label>Confirm password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Repeat Password"
+                name="repeat password"
+               
+                onChange={(e)=>setPass2(e.target.value)}   
+              />
+            </Form.Group>
+        
+            <Button  variant="dark" onClick={SubmitSignIn} >
+              Submit
+            </Button>
+            <Button style={{marginLeft:300}} variant="warning" onClick={()=>{setLoginhidden("");setSigninhidden("hidden")}} >
+              Log in
+            </Button>
+          </Form>
+
+
           </Modal.Body>
           </Modal>
 
@@ -361,7 +475,7 @@ export default function StartPage(){
       <Form.Group  style={{marginLeft:200}} className="mb-3" >
       <Form.Label style={{width:200,color:'navy'}}>AVAILABILITY</Form.Label>
       <Form.Label ></Form.Label>
-      <Button variant="secondary">CHECK AVAILABILITY</Button>
+      <Button onClick={checkavailablebtn} variant="secondary">CHECK AVAILABILITY</Button>
       </Form.Group>
       </MDBContainer >
     </div>
