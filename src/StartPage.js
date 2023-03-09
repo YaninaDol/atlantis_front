@@ -31,7 +31,7 @@ export default function StartPage(){
     const [showBasic, setShowBasic] = useState(false);
     const [startDate, setStartDate] = useState(Date.now());
     const [endDate, setEndDate] = useState(Date.now());
-    const [adult, setAdult] = useState(0);
+    const [adult, setAdult] = useState(2);
     const [children, setChildren] = useState(0);
     const [isLogin, setIsLogin] = useState(false);
     const [login, setLogin] = useState("");
@@ -185,6 +185,13 @@ export default function StartPage(){
   if(isLogin!=false)
   {
 
+    window.sessionStorage.setItem("StartDate",startDate);
+    window.sessionStorage.setItem("EndDate",endDate);
+    window.sessionStorage.setItem("Adult",adult);
+    window.sessionStorage.setItem("Children",children);
+
+
+    window.location.href = "/bookpage";
 
   }
   else
