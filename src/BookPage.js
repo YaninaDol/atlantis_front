@@ -1,10 +1,12 @@
 import './StartPage.css';
+import axios from 'axios';
 import React, { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import ShowRoomItem from './showRoomsItem';
+import BookItem from './BookItem';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -40,8 +42,9 @@ import {
     const [bookhidden, setBookHidden] = useState("hidden");
     const [isLogin, setIsLogin] = useState(true);
     const [nameLogin, setnameLogin] = useState("Logout");
-    
+    const [rooms,setRooms] = useState([]);
     const [countRoom, setcountRoom] = useState(1);
+    const [f, setF] = useState(0);
     function checkavailablebtn()
     
     {
@@ -70,7 +73,36 @@ import {
     setChildren(window.sessionStorage.getItem("Children"));
    if(isLogin==true)
    {
-    
+    if(f==0)
+    {
+
+      var bodyFormData = new FormData();
+      bodyFormData.append('Start',  window.sessionStorage.getItem("StartDate"));
+      bodyFormData.append('End', window.sessionStorage.getItem("EndDate"));
+      bodyFormData.append('Adults', window.sessionStorage.getItem("Adult"));
+      bodyFormData.append('Children', window.sessionStorage.getItem("Children"));
+  console.log ("start"+window.sessionStorage.getItem("StartDate")+"end"+ window.sessionStorage.getItem("EndDate")+"adult"+window.sessionStorage.getItem("Adult")+"children"+window.sessionStorage.getItem("Children"));
+      axios (
+
+        {
+            method:'post',
+            url:'https://webapplicationatlantis20230228203434.azurewebsites.net/api/RoomControllerCrud/Availability',
+         
+            data:bodyFormData,
+            headers: { 'Accept': 'text/plain', 'Content-Type': 'multipart/form-data',
+            'Authorization':'Bearer '+ window.sessionStorage.getItem("AccessToken") }
+
+        }
+
+
+
+    ).then  (res=>
+            {
+                    console.log(res.data);
+                  setRooms(res.data);
+            });
+    }
+
    }
    else 
    {
@@ -298,6 +330,16 @@ import {
       </Form.Group>
       </MDBContainer >
     </div>
+
+<div>
+{
+  rooms.map((x)=><BookItem unic={x.id} header={x.name} pic1={x.picture1} pic2={x.picture2} pic3={x.picture3} description={x.description} view={x.views} size={x.size} occupancy={x.capacity} notice={x.notice} price={x.price} ></BookItem>)
+}
+
+</div>
+
+
+
         </div>
     )
   }
