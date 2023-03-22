@@ -2,13 +2,13 @@ import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import {
   MDBCard,
-  MDBCardImage,
-  MDBCardTitle,
+  MDBContainer,
+  MDBRow,
+  MDBCol,
   MDBCardText,
   MDBCardBody,
   MDBBtn,
-  MDBCardHeader,
-  MDBCardFooter
+  MDBCardHeader
 } from 'mdb-react-ui-kit';
   import { Component } from "react";
 
@@ -19,15 +19,26 @@ import {
 
     render()
     {
+    
+
         return(
-            <MDBCard shadow='0' style={{width:1200,marginLeft:20}} border='warning' background='white' >
-            <MDBCardHeader id={this.props.unic}>{this.props.header}</MDBCardHeader>
-            <MDBCardBody style={{float:'left'}}>
+            <MDBCard shadow='0' style={{width:1200,marginLeft:170, marginTop:70}} border='warning' background='white' >
+             <MDBCardHeader id={this.props.unic}>{this.props.header}</MDBCardHeader>
+<section className="h-100 h-custom" >
+  <MDBContainer className="py-5 h-100">
+    <MDBRow className="justify-content-left align-items-left h-100">
+      
+
+      <MDBCol  >
+
+                <div >
+
+                <MDBCardBody>
             <Carousel  >
       <Carousel.Item>
         <img
-       
-        height={220}
+      
+        height={270}
           className="d-block w-100"
           src={this.props.pic1}
           alt="First slide"
@@ -36,7 +47,7 @@ import {
          <Carousel.Item>
         <img
           
-          height={220}
+          height={270}
           className="d-block w-100"
           src={this.props.pic2}
           alt="Second slide"
@@ -45,7 +56,7 @@ import {
          <Carousel.Item>
         <img
           
-          height={220}
+          height={270}
           className="d-block w-100"
           src={this.props.pic3}
           alt="Third slide"
@@ -53,30 +64,60 @@ import {
          </Carousel.Item>
 
          </Carousel>
-              <MDBCardText>
-              Description {this.props.description}
+              <MDBCardText >
+             <h6> Description:</h6>  {this.props.description}
               </MDBCardText>
               <MDBCardText>
-              View: {this.props.view}
+              <h6> View:</h6> {this.props.view}
               </MDBCardText>
               <MDBCardText>
-              Size: {this.props.size}
+              <h6> Size: </h6> {this.props.size}
               </MDBCardText>
               <MDBCardText>
-              Max occupancy: {this.props.occupancy}
+              <h6>Max occupancy:</h6>  {this.props.occupancy}
               </MDBCardText>
               <MDBCardText>
-              Extra &#62; {this.props.notice}
+               Extra &#62; {this.props.notice}
               </MDBCardText>
            
             </MDBCardBody>
-            <MDBCardText  style={{float:'right'}}>
-              Price  {this.props.price} AED
-              </MDBCardText>
-            <MDBBtn onClick={() => this.props.book(this.props.unic)} className='bookbtn'  lg color='light' style={{color:'DarkGoldenRod'}}>
+           
+                </div>
+                
+       </MDBCol>
+
+
+
+        <MDBCol  style={{marginTop:30}}>
+     
+    <MDBCard
+        shadow='0'
+        border='secondary'
+        background='white'
+        className='mb-3'
+      >
+       
+        <MDBCardBody className='text-secondary'>
+       
+          <MDBCardText style={{float:'left'}}>
+            <h6>Best Available Rate</h6>
+            Avg Price Per Room Per Night
+            <h5> {this.props.price} AED</h5>
+          </MDBCardText>
+          <MDBBtn onClick={() => this.props.book(this.props.unic)}  lg color='light' style={{backgroundColor:'DarkGoldenRod' ,color:'white',width:200, marginLeft:120}}>
         Book
       </MDBBtn>
-          </MDBCard>
+        </MDBCardBody>
+      </MDBCard>
+     
+        </MDBCol>
+        
+      
+    </MDBRow>
+  </MDBContainer>
+</section>
+
+</MDBCard>
         );
     }
 }

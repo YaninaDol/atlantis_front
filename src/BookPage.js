@@ -43,8 +43,12 @@ import {
     const [isLogin, setIsLogin] = useState(true);
     const [nameLogin, setnameLogin] = useState("Logout");
     const [rooms,setRooms] = useState([]);
+    const [allrooms,setAllRooms] = useState([]);
+    const [category,setCategory] = useState([]);
     const [countRoom, setcountRoom] = useState(1);
     const [f, setF] = useState(0);
+
+
     function checkavailablebtn()
     
     {
@@ -52,6 +56,31 @@ import {
   {
 
    
+    var bodyFormData = new FormData();
+    bodyFormData.append('Start',  startDate);
+    bodyFormData.append('End', endDate);
+    bodyFormData.append('Adults', adult);
+    bodyFormData.append('Children', children);
+console.log ("start"+startDate+"end"+endDate+"adult"+adult+"children"+children);
+    axios (
+
+      {
+          method:'post',
+          url:'https://webapplicationatlantis20230228203434.azurewebsites.net/api/RoomControllerCrud/Availability',
+       
+          data:bodyFormData,
+          headers: { 'Accept': 'text/plain', 'Content-Type': 'multipart/form-data',
+          'Authorization':'Bearer '+ window.sessionStorage.getItem("AccessToken") }
+
+      }
+
+
+
+  ).then  (res=>
+          {
+                  console.log(res.data);
+                setRooms(res.data);
+          });
 
   }
   else
@@ -62,6 +91,9 @@ import {
 
 
       }
+
+
+
    useState(()=>
 
 
@@ -81,7 +113,7 @@ import {
       bodyFormData.append('End', window.sessionStorage.getItem("EndDate"));
       bodyFormData.append('Adults', window.sessionStorage.getItem("Adult"));
       bodyFormData.append('Children', window.sessionStorage.getItem("Children"));
-  console.log ("start"+window.sessionStorage.getItem("StartDate")+"end"+ window.sessionStorage.getItem("EndDate")+"adult"+window.sessionStorage.getItem("Adult")+"children"+window.sessionStorage.getItem("Children"));
+  //console.log ("start"+window.sessionStorage.getItem("StartDate")+"end"+ window.sessionStorage.getItem("EndDate")+"adult"+window.sessionStorage.getItem("Adult")+"children"+window.sessionStorage.getItem("Children"));
       axios (
 
         {
@@ -100,7 +132,32 @@ import {
             {
                     console.log(res.data);
                   setRooms(res.data);
+                  setAllRooms(res.data);
             });
+
+
+//category get
+
+axios (
+
+  {
+      method:'get',
+      url:'https://webapplicationatlantis20230228203434.azurewebsites.net/api/Category/GetAll',
+      headers: {
+      'Authorization':'Bearer '+ window.sessionStorage.getItem("AccessToken") }
+
+  }
+
+
+
+).then  (res=>
+      {
+              console.log(res.data);
+              setCategory(res.data);
+      });
+
+
+
     }
 
    }
@@ -114,6 +171,20 @@ import {
    
    
    )
+
+   function ChooseCategory(value)
+   {
+      if(value!=0)
+      {
+        setRooms(allrooms.filter(item => item.category == value));
+      }
+      else
+      {
+          setRooms(allrooms);
+      }
+    
+   }
+
 
     function loginbtn()
     {
@@ -330,6 +401,41 @@ import {
       </Form.Group>
       </MDBContainer >
     </div>
+
+<div>
+
+<Navbar  bg="light" variant="dark">
+        <Container style={{marginLeft:100, marginTop:20}}>
+        
+          <Nav  className="me-auto">
+           
+          <MDBNavbarItem>
+            
+            <select className="select p-2  bg-grey"  onChange={({ target: { value } }) => ChooseCategory(value)} style={{ width: "100%" }}>
+                      <option value={0}>All category</option>
+                      {
+                      category.map((x) => 
+                        <option  value={x.id}>
+                        {x.name}
+                        </option>
+                     )}
+                    </select>
+             
+            </MDBNavbarItem>
+           
+            <Nav.Link >Children: &nbsp;{children}</Nav.Link>
+            
+          </Nav>
+          <MDBBtn className='bookbtn' onClick={()=>setBookHidden("")} lg color='light' style={{marginLeft:500,color:'DarkGoldenRod'}}>
+        Modify Booking
+      </MDBBtn>
+        </Container>
+      </Navbar>
+
+
+</div>
+
+
 
 <div>
 {
