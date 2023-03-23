@@ -259,20 +259,29 @@ axios (
    
    function sortprice(value)
    {
-      if(value!=0)
+      if(value!='0')
       {
-        if(value==1)
+        if(value=='1')
         {
-          setRooms(allrooms.sort((a, b) => parseFloat(a.price) - parseFloat(b.price)));
+          
+          setRooms(  rooms
+            .slice()
+            .sort((a, b) => parseFloat(a.price) - parseFloat(b.price)));
+        
+       
+        
+         
         }
         else
         {
-          setRooms(allrooms.sort((a, b) =>parseFloat(b.price) - parseFloat(a.price)));
+          setRooms(  rooms
+            .slice()
+            .sort((a, b) => parseFloat(b.price) - parseFloat(a.price)));
         }
       }
       else
       {
-          setRooms(allrooms);
+         
       }
     
 
@@ -534,13 +543,13 @@ axios (
             <MDBNavbarItem style={{marginLeft:100}}>
             <h6>Sort by</h6>
             <select className="select p-2  bg-grey"  onChange={({ target: { value } }) => sortprice(value)} style={{ width: 'auto' }}>
-                      <option value={0}>By price</option>
+                      <option value='0'>By price</option>
                      
                         <option  value='1'>
-                        Sort by high price
+                        Prices Low To High
                         </option>
                         <option  value='2'>
-                        Sort by low price
+                        Prices High To Low
                         </option>
                    
                     </select>
