@@ -52,8 +52,9 @@ import {
     const [clickCategory, setClickCategory] = useState(0);
     const [clickView, setClickView] = useState(0);
 
-
-
+   
+    const [inputSearch, setInputSearch] = useState("");
+    const [findrooms,setFindRooms] = useState([]);
 
     function checkavailablebtn()
     
@@ -309,6 +310,35 @@ axios (
   
     }
 
+
+    function getSearch()
+      {
+                
+                let Copy = [...findrooms];
+
+                for (const iterator of allrooms) 
+                {
+                let name=iterator['name'];
+                  if(name.includes(inputSearch))
+                  {
+                    Copy.push(iterator);
+                    
+                  }
+                }
+              
+                if(inputSearch!="")
+              { setRooms(Copy); }
+              else
+              {
+                setRooms(allrooms);
+               
+              }
+
+      }
+
+
+
+
     return(
         <div>
 
@@ -515,7 +545,7 @@ axios (
 
 
           <MDBNavbarItem style={{marginLeft:200}}>
-            <h6>Filter by </h6>
+            <h6 style={{ color:'navy'}}>Filter by </h6>
             <select className="select p-2  bg-grey"  onChange={({ target: { value } }) => ChooseCategory(value)} style={{ width: 'auto' }}>
                       <option value={0}>All category</option>
                       {
@@ -540,8 +570,8 @@ axios (
                     </select>
              
             </MDBNavbarItem>
-            <MDBNavbarItem style={{marginLeft:100}}>
-            <h6>Sort by</h6>
+            <MDBNavbarItem style={{marginLeft:50}}>
+            <h6 style={{ color:'navy'}}>Sort by</h6>
             <select className="select p-2  bg-grey"  onChange={({ target: { value } }) => sortprice(value)} style={{ width: 'auto' }}>
                       <option value='0'>By price</option>
                      
@@ -556,12 +586,19 @@ axios (
              
             </MDBNavbarItem>
            
-         
+        
             
           </Nav>
-          <MDBBtn className='bookbtn' onClick={()=>setBookHidden("")} lg color='light' style={{marginLeft:500,color:'DarkGoldenRod'}}>
-        Modify Booking
-      </MDBBtn>
+          <Form style={{marginTop:30}}  className="d-flex">
+            <Form.Control
+              type="search"
+              placeholder="Search"
+              className="me-2"
+              aria-label="Search"
+              onChange={(e)=>setInputSearch(e.target.value)}
+            />
+            <Button onClick={getSearch} variant="outline-secondary">Search</Button>
+          </Form>
         </Container>
       </Navbar>
 
