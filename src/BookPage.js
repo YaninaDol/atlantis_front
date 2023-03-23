@@ -56,6 +56,10 @@ import {
     const [inputSearch, setInputSearch] = useState("");
     const [findrooms,setFindRooms] = useState([]);
 
+    const [phoneNumber, setPhoneNumber] = useState("");
+    const [notice, setNotice] = useState("");
+    
+
     function checkavailablebtn()
     
     {
@@ -319,7 +323,8 @@ axios (
                 for (const iterator of allrooms) 
                 {
                 let name=iterator['name'];
-                  if(name.includes(inputSearch))
+               
+                  if(name.toLowerCase().includes(inputSearch.toLowerCase()))
                   {
                     Copy.push(iterator);
                     
@@ -336,7 +341,42 @@ axios (
 
       }
 
+      function bookbtn(id)
+      {
 
+        
+
+      //   var bodyFormData = new FormData();
+
+      //   bodyFormData.append('roomNumber',  id);
+      //   bodyFormData.append('Userid',  window.sessionStorage.getItem("UserId"));
+      //   bodyFormData.append('Start',  startDate);
+      //   bodyFormData.append('End',endDate);
+      //   bodyFormData.append('phoneNumber', phoneNumber);
+      //   bodyFormData.append('notice',notice);
+        
+      //   console.log('roomNumber'+  id+'Userid'+ window.sessionStorage.getItem("UserId")+'Start'+ startDate+'End'+endDate+'phoneNumber'+ phoneNumber+'notice'+notice);
+
+      //   axios (
+  
+      //     {
+      //         method:'post',
+      //         url:'https://webapplicationatlantis20230228203434.azurewebsites.net/api/RoomControllerCrud/Book',
+      //         data:bodyFormData,
+      //         headers: { 'Accept': 'text/plain', 'Content-Type': 'multipart/form-data',
+      //         'Authorization':'Bearer '+ window.sessionStorage.getItem("AccessToken") }
+  
+      //     }
+  
+  
+  
+      // ).then  (res=>
+      //         {
+      //                 console.log(res);
+                 
+      //         });
+       
+      }
 
 
     return(
@@ -609,7 +649,7 @@ axios (
 
 <div>
 {
-  rooms.map((x)=><BookItem unic={x.id} header={x.name} pic1={x.picture1} pic2={x.picture2} pic3={x.picture3} description={x.description} view={x.views} size={x.size} occupancy={x.capacity} notice={x.notice} price={x.price} ></BookItem>)
+  rooms.map((x)=><BookItem book={bookbtn} unic={x.id} header={x.name} pic1={x.picture1} pic2={x.picture2} pic3={x.picture3} description={x.description} view={x.views} size={x.size} occupancy={x.capacity} notice={x.notice} price={x.price} ></BookItem>)
 }
 
 </div>
