@@ -45,8 +45,14 @@ import {
     const [rooms,setRooms] = useState([]);
     const [allrooms,setAllRooms] = useState([]);
     const [category,setCategory] = useState([]);
+    const [sides,setSides] = useState([]);
     const [countRoom, setcountRoom] = useState(1);
     const [f, setF] = useState(0);
+
+    const [clickCategory, setClickCategory] = useState(0);
+    const [clickView, setClickView] = useState(0);
+
+
 
 
     function checkavailablebtn()
@@ -156,7 +162,26 @@ axios (
               setCategory(res.data);
       });
 
+//sides get
 
+
+axios (
+
+  {
+      method:'get',
+      url:'https://webapplicationatlantis20230228203434.azurewebsites.net/api/Category/GetSides',
+      headers: {
+      'Authorization':'Bearer '+ window.sessionStorage.getItem("AccessToken") }
+
+  }
+
+
+
+).then  (res=>
+      {
+              console.log(res.data);
+              setSides(res.data);
+      });
 
     }
 
@@ -174,7 +199,11 @@ axios (
 
    function ChooseCategory(value)
    {
-      if(value!=0)
+    setClickCategory(value);
+    if(clickView==0)
+      {
+        
+        if(value!=0)
       {
         setRooms(allrooms.filter(item => item.category == value));
       }
@@ -182,9 +211,72 @@ axios (
       {
           setRooms(allrooms);
       }
+    }
+    else
+    {
+      if(value!=0)
+      {
+      setRooms(allrooms.filter(item => item.category == value && item.side == clickView ));
+    }
+    else
+    {
+      setRooms(allrooms.filter(item => item.side == clickView ));
+    }
+    }
     
    }
+   
 
+   function ChooseSide(value)
+   {
+      setClickView(value);
+      if(clickCategory==0)
+      {
+      if(value!=0)
+      {
+        setRooms(allrooms.filter(item => item.side == value));
+      }
+      else
+      {
+          setRooms(allrooms);
+      }
+    }
+    else
+    {
+      if(value!=0)
+      {
+      setRooms(allrooms.filter(item => item.side == value && item.category == clickCategory ));
+    }
+    else
+    {
+        setRooms(allrooms.filter(item =>  item.category == clickCategory ));
+    }
+
+
+    }
+    
+   }
+   
+   function sortprice(value)
+   {
+      if(value!=0)
+      {
+        if(value==1)
+        {
+          setRooms(allrooms.sort((a, b) => parseFloat(a.price) - parseFloat(b.price)));
+        }
+        else
+        {
+          setRooms(allrooms.sort((a, b) =>parseFloat(b.price) - parseFloat(a.price)));
+        }
+      }
+      else
+      {
+          setRooms(allrooms);
+      }
+    
+
+    }
 
     function loginbtn()
     {
@@ -405,13 +497,17 @@ axios (
 <div>
 
 <Navbar  bg="light" variant="dark">
-        <Container style={{marginLeft:100, marginTop:20}}>
+        <Container style={{marginLeft:200, marginTop:20}}>
         
           <Nav  className="me-auto">
-           
-          <MDBNavbarItem>
-            
-            <select className="select p-2  bg-grey"  onChange={({ target: { value } }) => ChooseCategory(value)} style={{ width: "100%" }}>
+          <MDBNavbarItem style={{fontSize:20, color:'navy'}}>
+            SELECT ROOM
+          </MDBNavbarItem>
+
+
+          <MDBNavbarItem style={{marginLeft:200}}>
+            <h6>Filter by </h6>
+            <select className="select p-2  bg-grey"  onChange={({ target: { value } }) => ChooseCategory(value)} style={{ width: 'auto' }}>
                       <option value={0}>All category</option>
                       {
                       category.map((x) => 
@@ -422,8 +518,36 @@ axios (
                     </select>
              
             </MDBNavbarItem>
+            <MDBNavbarItem style={{marginLeft:50}}>
+           <h6>&nbsp;</h6>
+            <select className="select p-2  bg-grey"  onChange={({ target: { value } }) => ChooseSide(value)} style={{ width: 'auto'}}>
+                      <option value={0}>All sides</option>
+                      {
+                      sides.map((x) => 
+                        <option  value={x.id}>
+                        {x.name}
+                        </option>
+                     )}
+                    </select>
+             
+            </MDBNavbarItem>
+            <MDBNavbarItem style={{marginLeft:100}}>
+            <h6>Sort by</h6>
+            <select className="select p-2  bg-grey"  onChange={({ target: { value } }) => sortprice(value)} style={{ width: 'auto' }}>
+                      <option value={0}>By price</option>
+                     
+                        <option  value='1'>
+                        Sort by high price
+                        </option>
+                        <option  value='2'>
+                        Sort by low price
+                        </option>
+                   
+                    </select>
+             
+            </MDBNavbarItem>
            
-            <Nav.Link >Children: &nbsp;{children}</Nav.Link>
+         
             
           </Nav>
           <MDBBtn className='bookbtn' onClick={()=>setBookHidden("")} lg color='light' style={{marginLeft:500,color:'DarkGoldenRod'}}>
