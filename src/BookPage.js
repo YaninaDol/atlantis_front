@@ -55,10 +55,14 @@ import {
    
     const [inputSearch, setInputSearch] = useState("");
     const [findrooms,setFindRooms] = useState([]);
-
+    const [FirstName, setFirstName] = useState("");
+    const [LastName, setLastName] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
     const [notice, setNotice] = useState("");
-    
+    const [totalDays, setTotalDays] = useState(0);
+    const [totalPrice, setTotalPrice] = useState(0);
+ 
+
 
     function checkavailablebtn()
     
@@ -341,42 +345,64 @@ axios (
 
       }
 
-      function bookbtn(id)
+      function submitbtn(id)
       {
 
         
 
-      //   var bodyFormData = new FormData();
+        var bodyFormData = new FormData();
 
-      //   bodyFormData.append('roomNumber',  id);
-      //   bodyFormData.append('Userid',  window.sessionStorage.getItem("UserId"));
-      //   bodyFormData.append('Start',  startDate);
-      //   bodyFormData.append('End',endDate);
-      //   bodyFormData.append('phoneNumber', phoneNumber);
-      //   bodyFormData.append('notice',notice);
+        bodyFormData.append('roomNumber',  id);
+        bodyFormData.append('Userid',  window.sessionStorage.getItem("UserId"));
+        bodyFormData.append('FirstName',  FirstName);
+        bodyFormData.append('LastName',  LastName);
+        bodyFormData.append('totaldays',  totalDays);
+        bodyFormData.append('Start',  startDate);
+        bodyFormData.append('End',endDate);
+        bodyFormData.append('phoneNumber', phoneNumber);
+        bodyFormData.append('notice',notice);
         
-      //   console.log('roomNumber'+  id+'Userid'+ window.sessionStorage.getItem("UserId")+'Start'+ startDate+'End'+endDate+'phoneNumber'+ phoneNumber+'notice'+notice);
+        console.log('roomNumber'+  id+'Userid'+ window.sessionStorage.getItem("UserId")+'Start'+ startDate+'End'+endDate+'phoneNumber'+ phoneNumber+'notice'+notice);
 
-      //   axios (
+        axios (
   
-      //     {
-      //         method:'post',
-      //         url:'https://webapplicationatlantis20230228203434.azurewebsites.net/api/RoomControllerCrud/Book',
-      //         data:bodyFormData,
-      //         headers: { 'Accept': 'text/plain', 'Content-Type': 'multipart/form-data',
-      //         'Authorization':'Bearer '+ window.sessionStorage.getItem("AccessToken") }
+          {
+              method:'post',
+              url:'https://webapplicationatlantis20230228203434.azurewebsites.net/api/RoomControllerCrud/Book',
+              data:bodyFormData,
+              headers: { 'Accept': 'text/plain', 'Content-Type': 'multipart/form-data',
+              'Authorization':'Bearer '+ window.sessionStorage.getItem("AccessToken") }
   
-      //     }
+          }
   
   
   
-      // ).then  (res=>
-      //         {
-      //                 console.log(res);
+      ).then  (res=>
+              {
+                      console.log(res);
                  
-      //         });
+              });
        
       }
+
+
+      function bookbtn(id)
+      {
+        setTotalDays( daysBetween(startDate,endDate));
+      
+      }
+
+
+      function treatAsUTC(date) {
+        var result = new Date(date);
+        result.setMinutes(result.getMinutes() - result.getTimezoneOffset());
+        return result;
+    }
+    
+    function daysBetween(startDate, endDate) {
+        var millisecondsPerDay = 24 * 60 * 60 * 1000;
+        return (treatAsUTC(endDate) - treatAsUTC(startDate)) / millisecondsPerDay;
+    }
 
 
     return(
