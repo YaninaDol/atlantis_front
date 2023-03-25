@@ -55,13 +55,20 @@ import {
    
     const [inputSearch, setInputSearch] = useState("");
     const [findrooms,setFindRooms] = useState([]);
+    const [BookProduct,setBookProduct] = useState(new Object());
+
     const [FirstName, setFirstName] = useState("");
     const [LastName, setLastName] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
     const [notice, setNotice] = useState("");
     const [totalDays, setTotalDays] = useState(0);
     const [totalPrice, setTotalPrice] = useState(0);
- 
+    const [arrBasket,setArrBasket] = useState([]);
+    const [showM, setShowM] = useState(false);
+    const handleShowM = () => setShowM(true);
+    const handleCloseM = () => setShowM(false);
+
+
 
 
     function checkavailablebtn()
@@ -389,7 +396,12 @@ axios (
       function bookbtn(id)
       {
         setTotalDays( daysBetween(startDate,endDate));
-      
+        if(isLogin==true)
+            {
+              setBookProduct(rooms.find(item => item.id == id));
+            handleShowM();
+            }
+            else{alert("You are not loggin!")};
       }
 
 
@@ -404,11 +416,41 @@ axios (
         return (treatAsUTC(endDate) - treatAsUTC(startDate)) / millisecondsPerDay;
     }
 
+    function  addBasket()
+    {
+      if(countRoom!=1)
+      {
+        setcountRoom(countRoom+1);
+      }
+      let Copy = [...arrBasket];
+      Copy.push(BookProduct);
+      setArrBasket(Copy);
+      console.log(arrBasket);
+      console.log(BookProduct);
+      window.sessionStorage.setItem("Basket", arrBasket);
+      setTotalPrice(totalDays*parseInt(BookProduct['price']));
+      handleCloseM();
+      
+    }
 
     return(
         <div>
 
-
+<Modal show={showM} onHide={handleCloseM}>
+        <Modal.Header closeButton>
+          <Modal.Title>My booking</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Do you want add to your booking?</Modal.Body>
+        <Modal.Footer>
+        <Button variant="outline-warning" onClick={addBasket}>
+            Book
+          </Button>
+          <Button variant="secondary" onClick={handleCloseM}>
+            Close
+          </Button>
+        
+        </Modal.Footer>
+      </Modal>
 
 
 
