@@ -93,8 +93,7 @@ export default function StartPage(){
                       
                       {
                          
-                            //  console.log(res.data.userRole[0]);
-                            //  console.log(res.data.token);
+                           
                          
                               window.sessionStorage.setItem("AccessToken", res.data.token);
                               window.sessionStorage.setItem("UserId", res.data.userId);
@@ -103,7 +102,7 @@ export default function StartPage(){
 
                              {
                                              
-                            //  window.location.href = "/";
+                           
                             setnameLogin("Logout");
                           
                                console.log(res.data.userRole[0]);
@@ -115,7 +114,7 @@ export default function StartPage(){
                              if(res.data.userRole[0]=="Admin")
                              {
                              
-                            ///  window.location.href = "/producttable";
+                        
                              }
 
 
@@ -184,7 +183,7 @@ export default function StartPage(){
     {
   if(isLogin!=false)
   {
-
+   
     window.sessionStorage.setItem("StartDate",startDate);
     window.sessionStorage.setItem("EndDate",endDate);
     window.sessionStorage.setItem("Adult",adult);
@@ -196,7 +195,7 @@ export default function StartPage(){
   }
   else
   {
-    //alert("You are not login!");
+    alert("You are not login!");
     handleShow();
   }
 

@@ -10,6 +10,7 @@ import BookItem from './BookItem';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import CartBasket from './CartBasket';
 import {
 
     MDBNavbarNav,
@@ -23,7 +24,9 @@ import {
     MDBCardImage,
     MDBCollapse,
     MDBCard,
+    MDBTypography,
     MDBCardBody,
+    MDBInputGroup,
     MDBCardTitle,
     MDBCardText,
     MDBCardGroup,
@@ -46,7 +49,7 @@ import {
     const [allrooms,setAllRooms] = useState([]);
     const [category,setCategory] = useState([]);
     const [sides,setSides] = useState([]);
-    const [countRoom, setcountRoom] = useState(1);
+    const [countRoom, setcountRoom] = useState(0);
     const [f, setF] = useState(0);
 
     const [clickCategory, setClickCategory] = useState(0);
@@ -60,14 +63,16 @@ import {
     const [FirstName, setFirstName] = useState("");
     const [LastName, setLastName] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
-    const [notice, setNotice] = useState("");
+    const [notice, setNotice] = useState(" ");
     const [totalDays, setTotalDays] = useState(0);
     const [totalPrice, setTotalPrice] = useState(0);
     const [arrBasket,setArrBasket] = useState([]);
     const [showM, setShowM] = useState(false);
     const handleShowM = () => setShowM(true);
     const handleCloseM = () => setShowM(false);
-
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
 
 
@@ -204,7 +209,7 @@ axios (
    }
    else 
    {
-    alert("Return to Login!");
+    alert("You are not Login!");
     window.location.href = "/";
    }
 
@@ -355,11 +360,13 @@ axios (
       function submitbtn(id)
       {
 
-        
-
+        if(FirstName!=""&&LastName!=""&&phoneNumber!="")
+       { for (const iterator of arrBasket) 
+        {
+       
         var bodyFormData = new FormData();
 
-        bodyFormData.append('roomNumber',  id);
+        bodyFormData.append('roomNumber',  iterator.id);
         bodyFormData.append('Userid',  window.sessionStorage.getItem("UserId"));
         bodyFormData.append('FirstName',  FirstName);
         bodyFormData.append('LastName',  LastName);
@@ -391,6 +398,15 @@ axios (
               });
        
       }
+      handleClose();
+    window.location.href = "/";
+       }
+       else{
+        alert("Fill in empty lines!");
+       }
+    }
+    
+   
 
 
       function bookbtn(id)
@@ -418,21 +434,21 @@ axios (
 
     function  addBasket()
     {
-      if(countRoom!=1)
-      {
+      
         setcountRoom(countRoom+1);
-      }
+       
+      
       let Copy = [...arrBasket];
       Copy.push(BookProduct);
       setArrBasket(Copy);
       console.log(arrBasket);
       console.log(BookProduct);
       window.sessionStorage.setItem("Basket", arrBasket);
-      setTotalPrice(totalDays*parseInt(BookProduct['price']));
+      setTotalPrice(totalDays*parseInt(BookProduct['price'])+totalPrice);
       handleCloseM();
       
     }
-
+   
     return(
         <div>
 
@@ -451,6 +467,89 @@ axios (
         
         </Modal.Footer>
       </Modal>
+
+      <Modal id='basket' show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Booking summary</Modal.Title>
+        </Modal.Header>
+        <Modal.Body> {
+        arrBasket.map(
+            (x)=><CartBasket  unic={x.id} name={x.name} startDate={startDate} endDate={endDate} picture={x.picture1} price={x.price} days={totalDays} guests={adult+" Adults "+children+" children "} ></CartBasket>
+        )
+        }
+              <div className="d-flex justify-content-between mb-4">
+                <MDBTypography tag="h5" className="text-uppercase">
+                  Total price: 
+                </MDBTypography>
+                <MDBTypography tag="h5">{totalPrice} AED</MDBTypography>
+              </div>
+              <h3 style={{color:'navy'}}>YOUR DETAILS</h3>
+              <MDBRow className="justify-content-between align-items-center">
+                <MDBCol >
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>First Name</Form.Label>
+        <Form.Control onChange={(e)=>setFirstName(e.target.value)} type="text" />
+      
+      </Form.Group>
+                </MDBCol>
+                <MDBCol  >
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>Last Name</Form.Label>
+        <Form.Control onChange={(e)=>setLastName(e.target.value)} type="text" />
+      </Form.Group>
+                </MDBCol>
+                </MDBRow>
+
+                <MDBRow className="justify-content-between align-items-center">
+                <MDBCol >
+                <Form.Group className="mb-3" >
+        <Form.Label>Telephone Number</Form.Label>
+        <Form.Control onChange={(e)=>setPhoneNumber(e.target.value)} type="text" />
+      
+      </Form.Group>
+                </MDBCol>
+                </MDBRow>
+                <MDBRow className="justify-content-between align-items-center">
+                <MDBCol  >
+                <Form.Group className="mb-3" >
+        <Form.Label>Notice</Form.Label>
+        <Form.Control onChange={(e)=>setNotice(e.target.value)} type="text" />
+      </Form.Group>
+                </MDBCol>
+                </MDBRow>
+
+              <MDBCardBody>
+            <p>
+              <strong>We accept</strong>
+            </p>
+            <MDBCardImage className="me-2" width="45px"
+              src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg"
+              alt="Visa" />
+            <MDBCardImage className="me-2" width="45px"
+              src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/amex.svg"
+              alt="American Express" />
+            <MDBCardImage className="me-2" width="45px"
+              src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce-gateway-stripe/assets/images/mastercard.svg"
+              alt="Mastercard" />
+            <MDBCardImage className="me-2" width="45px"
+              src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce/includes/gateways/paypal/assets/images/paypal.png"
+              alt="PayPal acceptance mark" />
+          </MDBCardBody>
+        
+        </Modal.Body>
+        <Modal.Footer>
+        <Button  variant="outline-warning"  onClick={submitbtn}>
+            Checkout 
+          </Button>
+          <Button variant="dark" onClick={()=>{handleClose();arrBasket.splice(0, arrBasket.length);setTotalPrice(0); setcountRoom(0)}}>
+            Modify booking
+          </Button>
+         
+        </Modal.Footer>
+      </Modal>
+    
+
+
 
 
 
@@ -494,7 +593,7 @@ axios (
         />
               </MDBNavbarItem>
               <MDBNavbarItem>
-              <MDBBtn className='bookbtn' href='#booking' lg color='light' style={{marginLeft:500,color:'DarkGoldenRod'}}>
+              <MDBBtn className='bookbtn' onClick={()=>handleShow()} href='#booking' lg color='light' style={{marginLeft:500,color:'DarkGoldenRod'}}>
         My booking
       </MDBBtn>
               </MDBNavbarItem>
