@@ -63,7 +63,7 @@ import {
     const [FirstName, setFirstName] = useState("");
     const [LastName, setLastName] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
-    const [notice, setNotice] = useState(" ");
+    const [notice, setNotice] = useState("none");
     const [totalDays, setTotalDays] = useState(0);
     const [totalPrice, setTotalPrice] = useState(0);
     const [arrBasket,setArrBasket] = useState([]);
@@ -357,7 +357,7 @@ axios (
 
       }
 
-      function submitbtn(id)
+      function submitbtn()
       {
 
         if(FirstName!=""&&LastName!=""&&phoneNumber!="")
@@ -376,8 +376,7 @@ axios (
         bodyFormData.append('phoneNumber', phoneNumber);
         bodyFormData.append('notice',notice);
         
-        console.log('roomNumber'+  id+'Userid'+ window.sessionStorage.getItem("UserId")+'Start'+ startDate+'End'+endDate+'phoneNumber'+ phoneNumber+'notice'+notice);
-
+       
         axios (
   
           {
@@ -394,12 +393,15 @@ axios (
       ).then  (res=>
               {
                       console.log(res);
+                      alert("You have successfully booked!");
+                      handleClose();
+    window.location.href = "/";
                  
               });
+
        
       }
-      handleClose();
-    window.location.href = "/";
+      
        }
        else{
         alert("Fill in empty lines!");
