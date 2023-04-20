@@ -79,7 +79,7 @@ export default function StartPage(){
 
                   {
                       method:'post',
-                      url:'https://webapplicationatlantis20230228203434.azurewebsites.net/api/Authenticate/login',
+                      url:'https://localhost:7271/api/Authenticate/login',
                       data:
                       JSON.stringify({ UserName:login, Password: pass1}),
                       headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }
@@ -149,7 +149,7 @@ export default function StartPage(){
 
                     {
                         method:'post',
-                        url:'https://webapplicationatlantis20230228203434.azurewebsites.net/api/Authenticate/regUser',
+                        url:'https://localhost:7271/api/Authenticate/regUser',
                         data:
                         JSON.stringify({ UserName:login, Password: pass1,Email:email }),
                         headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }

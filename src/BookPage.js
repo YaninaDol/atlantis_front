@@ -93,7 +93,7 @@ console.log ("start"+startDate+"end"+endDate+"adult"+adult+"children"+children);
 
       {
           method:'post',
-          url:'https://webapplicationatlantis20230228203434.azurewebsites.net/api/RoomControllerCrud/Availability',
+          url:'https://localhost:7271/api/RoomControllerCrud/Availability',
        
           data:bodyFormData,
           headers: { 'Accept': 'text/plain', 'Content-Type': 'multipart/form-data',
@@ -145,7 +145,7 @@ console.log ("start"+startDate+"end"+endDate+"adult"+adult+"children"+children);
 
         {
             method:'post',
-            url:'https://webapplicationatlantis20230228203434.azurewebsites.net/api/RoomControllerCrud/Availability',
+            url:'https://localhost:7271/api/RoomControllerCrud/Availability',
          
             data:bodyFormData,
             headers: { 'Accept': 'text/plain', 'Content-Type': 'multipart/form-data',
@@ -169,7 +169,7 @@ axios (
 
   {
       method:'get',
-      url:'https://webapplicationatlantis20230228203434.azurewebsites.net/api/Category/GetAll',
+      url:'https://localhost:7271/api/Category/GetAll',
       headers: {
       'Authorization':'Bearer '+ window.sessionStorage.getItem("AccessToken") }
 
@@ -190,7 +190,7 @@ axios (
 
   {
       method:'get',
-      url:'https://webapplicationatlantis20230228203434.azurewebsites.net/api/Category/GetSides',
+      url:'https://localhost:7271/api/Category/GetSides',
       headers: {
       'Authorization':'Bearer '+ window.sessionStorage.getItem("AccessToken") }
 
@@ -381,7 +381,7 @@ axios (
   
           {
               method:'post',
-              url:'https://webapplicationatlantis20230228203434.azurewebsites.net/api/RoomControllerCrud/Book',
+              url:'https://localhost:7271/api/RoomControllerCrud/Book',
               data:bodyFormData,
               headers: { 'Accept': 'text/plain', 'Content-Type': 'multipart/form-data',
               'Authorization':'Bearer '+ window.sessionStorage.getItem("AccessToken") }
