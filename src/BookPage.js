@@ -26,6 +26,7 @@ import {
     MDBCard,
     MDBTypography,
     MDBCardBody,
+    MDBPagination, MDBPaginationItem, MDBPaginationLink,
     MDBInputGroup,
     MDBCardTitle,
     MDBCardText,
@@ -74,6 +75,37 @@ import {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const [itemsPerPage,setItemsPerPage]=useState(4);
+
+
+
+    const totalItems = Math.ceil(rooms.length / itemsPerPage);
+  
+    const [active, setActive] = useState(1);
+  
+    
+    
+      const handleClick = (number) => {
+        setActive(number);
+        
+      };
+    
+  
+      const renderPageNumbers = () => {
+        const pageNumbers = [];
+        for (let i = 1; i <= totalItems; i++) {
+          pageNumbers.push(
+            <MDBPaginationItem key={i} active={i === active} onClick={() => handleClick(i)}>
+              <span className="page-link">{i}</span>
+            </MDBPaginationItem>
+          );
+        }
+        return pageNumbers;
+      };
+      
+      const indexOfLastItem = active * itemsPerPage;
+      const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+      const currentItems = rooms.slice(indexOfFirstItem, indexOfLastItem);
 
 
     function checkavailablebtn()
@@ -227,10 +259,12 @@ axios (
         if(value!=0)
       {
         setRooms(allrooms.filter(item => item.category == value));
+        renderpage();
       }
       else
       {
           setRooms(allrooms);
+          renderpage();
       }
     }
     else
@@ -238,10 +272,12 @@ axios (
       if(value!=0)
       {
       setRooms(allrooms.filter(item => item.category == value && item.side == clickView ));
+      renderpage();
     }
     else
     {
       setRooms(allrooms.filter(item => item.side == clickView ));
+      renderpage();
     }
     }
     
@@ -256,10 +292,13 @@ axios (
       if(value!=0)
       {
         setRooms(allrooms.filter(item => item.side == value));
+        renderpage();
+
       }
       else
       {
           setRooms(allrooms);
+          renderpage();
       }
     }
     else
@@ -267,10 +306,12 @@ axios (
       if(value!=0)
       {
       setRooms(allrooms.filter(item => item.side == value && item.category == clickCategory ));
+      renderpage();
     }
     else
     {
         setRooms(allrooms.filter(item =>  item.category == clickCategory ));
+        renderpage();
     }
 
 
@@ -289,7 +330,7 @@ axios (
             .slice()
             .sort((a, b) => parseFloat(a.price) - parseFloat(b.price)));
         
-       
+            renderpage();
         
          
         }
@@ -298,6 +339,7 @@ axios (
           setRooms(  rooms
             .slice()
             .sort((a, b) => parseFloat(b.price) - parseFloat(a.price)));
+            renderpage();
         }
       }
       else
@@ -330,6 +372,12 @@ axios (
   
     }
 
+    function renderpage()
+    {
+      const indexOfLastItem = active * itemsPerPage;
+      const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+      const currentItems = rooms.slice(indexOfFirstItem, indexOfLastItem);
+    }
 
     function getSearch()
       {
@@ -808,20 +856,48 @@ axios (
             />
             <Button onClick={getSearch} variant="outline-secondary">Search</Button>
           </Form>
+         
         </Container>
       </Navbar>
 
 
 </div>
-
+<div>
+<select  style={{marginLeft:1180,marginTop:50}} className="select p-2 rounded bg-grey"  onChange={({ target: { value } }) => setItemsPerPage(value)} >
+                      <option value='10'>Choose count of page</option>
+                    <option  value='4'> 4</option>
+                    <option  value='6'>6</option>
+                    <option  value='8'>8</option>
+                    <option  value='10'>10</option>
+                    </select>
+</div>
 
 
 <div>
 {
-  rooms.map((x)=><BookItem book={bookbtn} unic={x.id} header={x.name} pic1={x.picture1} pic2={x.picture2} pic3={x.picture3} description={x.description} view={x.views} size={x.size} occupancy={x.capacity} notice={x.notice} price={x.price} ></BookItem>)
+  currentItems.map((x)=><BookItem book={bookbtn} unic={x.id} header={x.name} pic1={x.picture1} pic2={x.picture2} pic3={x.picture3} description={x.description} view={x.views} size={x.size} occupancy={x.capacity} notice={x.notice} price={x.price} ></BookItem>)
 }
 
 </div>
+
+
+<div>
+<nav aria-label='...'>
+      <MDBPagination style={{marginLeft:700}}  className='pagination'>
+      <MDBPaginationItem className='page-item'>
+          <MDBPaginationLink className='page-link'  onClick={(e) =>{active>1? handleClick(active-1): e.preventDefault()}} aria-disabled='true'>
+            Previous
+          </MDBPaginationLink>
+        </MDBPaginationItem>
+        {renderPageNumbers()}
+        <MDBPaginationItem>
+          <MDBPaginationLink  onClick={(e) =>{active===indexOfLastItem? handleClick(active+1): e.preventDefault()}} aria-disabled='true'>
+            Next
+          </MDBPaginationLink>
+        </MDBPaginationItem>
+      </MDBPagination>
+      </nav>
+    </div>
 
 
 
