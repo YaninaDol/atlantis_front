@@ -1,4 +1,5 @@
 import './StartPage.css';
+import { Link, Outlet } from "react-router-dom";
 import axios from 'axios';
 import React, { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
@@ -639,7 +640,7 @@ axios (
                 <MDBNavbarLink style={{color:'navy'}} onClick={loginbtn}>{nameLogin}</MDBNavbarLink>
               </MDBNavbarItem>
               <MDBNavbarItem>
-                <MDBNavbarLink style={{color:'navy'}} href='#'>News</MDBNavbarLink>
+              <MDBNavbarLink style={{color:'navy'}} to="/news" > <Link style={{color:'navy',textDecoration:'none'}} to="/news">News</Link></MDBNavbarLink>
               </MDBNavbarItem>
               <MDBNavbarItem>
                 <MDBNavbarLink style={{color:'navy'}} href='#'>About</MDBNavbarLink>

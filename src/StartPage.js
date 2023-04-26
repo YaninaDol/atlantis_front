@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import ShowRoomItem from './showRoomsItem';
+import { Link, Outlet } from "react-router-dom";
 import axios from 'axios';
 import {
 
@@ -334,7 +335,8 @@ export default function StartPage(){
                 <MDBNavbarLink style={{color:'navy'}} onClick={loginbtn}>{nameLogin}</MDBNavbarLink>
               </MDBNavbarItem>
               <MDBNavbarItem>
-                <MDBNavbarLink style={{color:'navy'}} href='#'>News</MDBNavbarLink>
+
+                <MDBNavbarLink style={{color:'navy'}} to="/news" > <Link style={{color:'navy',textDecoration:'none'}} to="/news">News</Link></MDBNavbarLink>
               </MDBNavbarItem>
               <MDBNavbarItem>
                 <MDBNavbarLink style={{color:'navy'}} href='#'>About</MDBNavbarLink>
