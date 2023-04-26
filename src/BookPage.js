@@ -95,8 +95,8 @@ import {
         const pageNumbers = [];
         for (let i = 1; i <= totalItems; i++) {
           pageNumbers.push(
-            <MDBPaginationItem key={i} active={i === active} onClick={() => handleClick(i)}>
-              <span className="page-link">{i}</span>
+            <MDBPaginationItem  key={i} active={i === active} onClick={() => handleClick(i)}>
+              <span style={{backgroundColor:'lightgrey',borderRadius:'5px',marginLeft:'5px',marginRight:'5px'}} className="page-link">{i}</span>
             </MDBPaginationItem>
           );
         }
@@ -141,6 +141,7 @@ import {
                         {
                                 console.log(res.data);
                               setRooms(res.data);
+                              renderpage();
                         });
                       }
                       else alert("You must book more than 1 day!");
@@ -896,15 +897,15 @@ axios (
 
 <div>
 <nav aria-label='Page navigation example'>
-      <MDBPagination style={{marginLeft:700}}  className='mb-0'>
-      <MDBPaginationItem className='page-item'>
-          <MDBPaginationLink className='page-link'  onClick={(e) =>{active>1? handleClick(active-1): e.preventDefault()}} aria-disabled='true'>
+      <MDBPagination  style={{marginLeft:650,marginTop:50}}  className='mb-0'>
+      <MDBPaginationItem >
+          <MDBPaginationLink  style={{color:'gray'}} onClick={(e) =>{active>1? handleClick(active-1): e.preventDefault()}} aria-disabled='true'>
             Previous
           </MDBPaginationLink>
         </MDBPaginationItem>
         {renderPageNumbers()}
         <MDBPaginationItem>
-          <MDBPaginationLink  onClick={(e) =>{active===indexOfLastItem? handleClick(active+1): e.preventDefault()}} aria-disabled='true'>
+          <MDBPaginationLink style={{color:'gray'}} onClick={(e) =>{active===indexOfLastItem? handleClick(active+1): e.preventDefault()}} aria-disabled='true'>
             Next
           </MDBPaginationLink>
         </MDBPaginationItem>
