@@ -111,36 +111,39 @@ import {
     function checkavailablebtn()
     
     {
+      setTotalDays( daysBetween(startDate,endDate));
+     // alert(totalDays);
   if(isLogin!=false)
   {
 
-   
-    var bodyFormData = new FormData();
-    bodyFormData.append('Start',  startDate);
-    bodyFormData.append('End', endDate);
-    bodyFormData.append('Adults', adult);
-    bodyFormData.append('Children', children);
-console.log ("start"+startDate+"end"+endDate+"adult"+adult+"children"+children);
-    axios (
+                if(totalDays>1)
+              {    var bodyFormData = new FormData();
+                  bodyFormData.append('Start',  startDate);
+                  bodyFormData.append('End', endDate);
+                  bodyFormData.append('Adults', adult);
+                  bodyFormData.append('Children', children);
+              console.log ("start"+startDate+"end"+endDate+"adult"+adult+"children"+children);
+                  axios (
 
-      {
-          method:'post',
-          url:'https://localhost:7271/api/RoomControllerCrud/Availability',
-       
-          data:bodyFormData,
-          headers: { 'Accept': 'text/plain', 'Content-Type': 'multipart/form-data',
-          'Authorization':'Bearer '+ window.sessionStorage.getItem("AccessToken") }
+                    {
+                        method:'post',
+                        url:'https://localhost:7271/api/RoomControllerCrud/Availability',
+                    
+                        data:bodyFormData,
+                        headers: { 'Accept': 'text/plain', 'Content-Type': 'multipart/form-data',
+                        'Authorization':'Bearer '+ window.sessionStorage.getItem("AccessToken") }
 
-      }
+                    }
 
 
 
-  ).then  (res=>
-          {
-                  console.log(res.data);
-                setRooms(res.data);
-          });
-
+                ).then  (res=>
+                        {
+                                console.log(res.data);
+                              setRooms(res.data);
+                        });
+                      }
+                      else alert("You must book more than 1 day!");
   }
   else
   {
@@ -189,9 +192,11 @@ console.log ("start"+startDate+"end"+endDate+"adult"+adult+"children"+children);
 
     ).then  (res=>
             {
+              console.log('RES ARRAY');
                     console.log(res.data);
                   setRooms(res.data);
                   setAllRooms(res.data);
+                  renderpage();
             });
 
 
@@ -462,10 +467,18 @@ axios (
       function bookbtn(id)
       {
         setTotalDays( daysBetween(startDate,endDate));
+        
         if(isLogin==true)
             {
-              setBookProduct(rooms.find(item => item.id == id));
+
+              if(totalDays>1)
+              {setBookProduct(rooms.find(item => item.id == id));
             handleShowM();
+              }
+              else{alert("You must book moore than 1 day!")};
+
+
+
             }
             else{alert("You are not loggin!")};
       }
@@ -882,8 +895,8 @@ axios (
 
 
 <div>
-<nav aria-label='...'>
-      <MDBPagination style={{marginLeft:700}}  className='pagination'>
+<nav aria-label='Page navigation example'>
+      <MDBPagination style={{marginLeft:700}}  className='mb-0'>
       <MDBPaginationItem className='page-item'>
           <MDBPaginationLink className='page-link'  onClick={(e) =>{active>1? handleClick(active-1): e.preventDefault()}} aria-disabled='true'>
             Previous
