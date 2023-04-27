@@ -1,4 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
+import Carousels from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 import Carousel from 'react-bootstrap/Carousel';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -25,7 +27,25 @@ import {
   } from 'mdb-react-ui-kit';
 
 export default function News(){
-
+    const responsive = {
+        superLargeDesktop: {
+          // the naming can be any, depends on you.
+          breakpoint: { max: 4000, min: 3000 },
+          items: 5
+        },
+        desktop: {
+          breakpoint: { max: 3000, min: 1024 },
+          items: 3
+        },
+        tablet: {
+          breakpoint: { max: 1024, min: 464 },
+          items: 2
+        },
+        mobile: {
+          breakpoint: { max: 464, min: 0 },
+          items: 1
+        }
+      };
 
     return(
         <div>
@@ -176,6 +196,74 @@ export default function News(){
 </div>
 </div>
 
+<div style={{marginTop:100}}>
+<Carousels  responsive={responsive}>
+  <div style={{marginLeft:30,marginRight:30}}> 
+     <img
+        height={300}
+          src="https://www.atlantis.com/scropper/-/screen/992/atlantis/dubai/atr/atlantis-the-royal/grand-reveal/grandreveal-ad-fireworks.jpg"
+          alt="First slide"
+        />
+    </div>
+    <div style={{marginLeft:30,marginRight:30}}> 
+     <img
+        height={300}
+          src="https://www.atlantis.com/scropper/-/screen/992/atlantis/dubai/atr/atlantis-the-royal/grand-reveal/grandreveal-beyonce-yellowdress.jpg"
+          alt="First slide"
+        />
+    </div>
+    <div style={{marginLeft:30,marginRight:30}}> 
+     <img
+       height={300}
+          src="https://www.atlantis.com/scropper/-/screen/992/atlantis/dubai/atr/atlantis-the-royal/grand-reveal/grandreveal-beyonce-blueivy.jpg"
+          alt="First slide"
+        />
+    </div>
+    <div style={{marginLeft:30,marginRight:30}}> 
+     <img
+        height={300}
+          src="https://www.atlantis.com/scropper/-/screen/992/atlantis/dubai/atr/atlantis-the-royal/grand-reveal/grandreveal-beyonce-mayyas-pinkdress.jpg"
+          alt="First slide"
+        />
+    </div>
+    <div style={{marginLeft:30,marginRight:30}}> 
+     <img
+       height={300}
+          src="https://www.atlantis.com/scropper/-/screen/992/atlantis/dubai/atr/atlantis-the-royal/grand-reveal/grandreveal-beyonce-skyblaze-platform.jpg"
+          alt="First slide"
+        />
+    </div>
+    <div style={{marginLeft:30,marginRight:30}}> 
+     <img
+        height={300}
+          src="https://www.atlantis.com/scropper/-/screen/992/atlantis/dubai/atr/atlantis-the-royal/grand-reveal/grandreveal-building-fireworks-closeup.jpg"
+          alt="First slide"
+        />
+    </div>
+    <div style={{marginLeft:30,marginRight:30}}> 
+     <img
+        height={300}
+          src="https://www.atlantis.com/scropper/-/screen/992/atlantis/dubai/atr/atlantis-the-royal/grand-reveal/grandreveal-fireworks-palm.jpg"
+          alt="First slide"
+        />
+    </div>
+    <div style={{marginLeft:30,marginRight:30}}> 
+     <img
+        height={300}
+          src="https://www.atlantis.com/scropper/-/screen/992/atlantis/dubai/atr/atlantis-the-royal/grand-reveal/grandreveal-swedishhousemafia-fire.jpg"
+          alt="First slide"
+        />
+    </div>
+    <div style={{marginLeft:30,marginRight:30}}> 
+     <img
+         height={300}
+          src="https://www.atlantis.com/scropper/-/screen/992/atlantis/dubai/atr/atlantis-the-royal/grand-reveal/grandreveal-swedishhousemafia-closeup.jpg"
+          alt="First slide"
+        />
+    </div>
+
+</Carousels>;
+</div>
 
         </div>
 
