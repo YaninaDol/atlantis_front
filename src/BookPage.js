@@ -83,8 +83,8 @@ import {
     const handleShowQr = () => setShowQr(true);
 
     const [showPayCard, setShowPayCard] = useState(false);
-    const handleClosePayCard = () => showPayCard(false);
-    const handleShowPayCard = () => showPayCard(true);
+    const handleClosePayCard = () => setShowPayCard(false);
+    const handleShowPayCard = () => setShowPayCard(true);
 
 
 
@@ -143,6 +143,13 @@ function pay()
  setNotice(notice+payInfo);
 
  handleCloseQr();
+}
+function payCard()
+{
+ setPayInfo('order_id=100506');
+ setNotice(notice+payInfo);
+
+ handleClosePayCard();
 }
 
 
@@ -663,6 +670,70 @@ axios (
         </Modal.Footer>
       </Modal>
     
+<Modal show={showPayCard} onHide={handleClosePayCard} >
+
+<MDBCol >
+<Modal.Header  closeButton>
+<Modal.Title>Payment</Modal.Title>
+        </Modal.Header>   
+        <Modal.Body>
+                    <label>Card number</label>
+                    <form className="mb-5">
+                      <MDBInput
+                        className="mb-5"
+                      
+                        type="text"
+                        size="lg"
+                        defaultValue="1234 5678 9012 3457"
+                      />
+                        <label>Name on card</label>
+                      <MDBInput
+                        className="mb-5"
+                        type="text"
+                        size="lg"
+                        defaultValue="John Smith"
+                      />
+                       
+                      <MDBRow>
+                        <MDBCol md="6" className="mb-5">
+                          <MDBInput
+                            className="mb-4"
+                            label="Expiration"
+                            type="text"
+                            size="sm"
+                            minLength="7"
+                            maxLength="7"
+                            defaultValue="01/22"
+                            placeholder="MM/YYYY"
+                          />
+                        </MDBCol>
+                        <MDBCol md="6" className="mb-5">
+                          <MDBInput
+                            className="mb-4"
+                            label="Cvv"
+                            type="text"
+                            size="sm"
+                            minLength="3"
+                            maxLength="3"
+                            placeholder="&#9679;&#9679;&#9679;"
+                            defaultValue="&#9679;&#9679;&#9679;"
+                          />
+                        </MDBCol>
+                      </MDBRow>
+
+                      <MDBRow>
+                      <MDBBtn style={{marginTop:30}} onClick={payCard}  size="lg">
+                        Proceed to payment 
+                      </MDBBtn>
+                      </MDBRow>
+
+                      </form>
+                      </Modal.Body>
+                      </MDBCol>
+  
+</Modal>
+
+
 
       <Modal  className="text-center" show={showQr}  onHide={handleCloseQr}>
         <Modal.Header closeButton>
