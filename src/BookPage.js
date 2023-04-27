@@ -12,6 +12,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import CartBasket from './CartBasket';
+import QRCode from 'qrcode';
 import {
 
     MDBNavbarNav,
@@ -66,6 +67,7 @@ import {
     const [LastName, setLastName] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
     const [notice, setNotice] = useState("none");
+    const [payInfo, setPayInfo] = useState("");
     const [totalDays, setTotalDays] = useState(0);
     const [totalPrice, setTotalPrice] = useState(0);
     const [arrBasket,setArrBasket] = useState([]);
@@ -76,22 +78,24 @@ import {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const [showQr, setShowQr] = useState(false);
+    const handleCloseQr = () => setShowQr(false);
+    const handleShowQr = () => setShowQr(true);
+
+    const [showPayCard, setShowPayCard] = useState(false);
+    const handleClosePayCard = () => showPayCard(false);
+    const handleShowPayCard = () => showPayCard(true);
+
+
+
     const [itemsPerPage,setItemsPerPage]=useState(4);
-
-
-
     const totalItems = Math.ceil(rooms.length / itemsPerPage);
   
     const [active, setActive] = useState(1);
-  
-    
-    
       const handleClick = (number) => {
         setActive(number);
         
       };
-    
-  
       const renderPageNumbers = () => {
         const pageNumbers = [];
         for (let i = 1; i <= totalItems; i++) {
@@ -107,6 +111,39 @@ import {
       const indexOfLastItem = active * itemsPerPage;
       const indexOfFirstItem = indexOfLastItem - itemsPerPage;
       const currentItems = rooms.slice(indexOfFirstItem, indexOfLastItem);
+
+      const [result, setResult] = useState("");
+      const [picture, setPicture] = useState("");
+
+      function CreateQr()
+      {
+        if(isLogin==true)
+      { handleShowQr();
+    
+    
+       var QRCode = require('qrcode')
+     var str=`https://www.ipay.ua/ru/charger?bill_id=1663&acc=021018496&invoice=${totalPrice}.00&order_id=100506`;
+       QRCode.toDataURL(str, function (err, url) {
+        setPicture(url);
+         console.log(url)
+         setPayInfo('order_id=100506');
+       })
+      }
+      else 
+      {
+        alert("You are not Log in!");
+        handleShow();
+      }
+      }
+
+
+function pay()
+{
+ setPayInfo('order_id=100506');
+ setNotice(notice+payInfo);
+
+ handleCloseQr();
+}
 
 
     function checkavailablebtn()
@@ -600,10 +637,23 @@ axios (
               src="https://mdbcdn.b-cdn.net/wp-content/plugins/woocommerce/includes/gateways/paypal/assets/images/paypal.png"
               alt="PayPal acceptance mark" />
           </MDBCardBody>
-        
+        <MDBCol style={{marginTop:20}}>
+        <MDBRow>
+          <Button  variant="outline-success" onClick={()=>handleShowPayCard()}  >
+            Pay by card 
+          </Button>
+          </MDBRow>
+          </MDBCol>
+          <MDBCol>
+          <MDBRow>
+          <Button  variant="outline-success" onClick={()=>{ CreateQr()}} >
+            Pay by QR 
+          </Button>
+          </MDBRow>
+</MDBCol>
         </Modal.Body>
         <Modal.Footer>
-        <Button  variant="outline-warning"  onClick={submitbtn}>
+        <Button  variant="warning"  onClick={submitbtn}>
             Checkout 
           </Button>
           <Button variant="dark" onClick={()=>{handleClose();arrBasket.splice(0, arrBasket.length);setTotalPrice(0); setcountRoom(0)}}>
@@ -614,7 +664,26 @@ axios (
       </Modal>
     
 
-
+      <Modal  className="text-center" show={showQr}  onHide={handleCloseQr}>
+        <Modal.Header closeButton>
+          <Modal.Title>Payment Amount</Modal.Title>
+        </Modal.Header>
+        <Modal.Body> <div>
+   <img src={picture} alt="picture QR"></img>
+    </div>
+    <div >
+			
+			<div >{result}</div>		
+		</div></Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseQr}>
+            Close
+          </Button>
+          <Button variant="success" onClick={pay} >
+            Proceed to pay
+          </Button>
+        </Modal.Footer>
+      </Modal>
 
 
 
