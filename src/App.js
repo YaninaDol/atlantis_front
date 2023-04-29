@@ -4,6 +4,7 @@ import StartPage from "./StartPage";
 import BookPage from "./BookPage";
 import News from "./News";
 import About from "./About";
+import AdminPage from "./AdminPage";
 function App() {
   return (
       <div>
@@ -13,6 +14,7 @@ function App() {
                     <Route path='/bookpage' element={<BookPage/>}></Route>
                     <Route path='/news' element={<News/>}></Route>
                     <Route path='/about' element={<About/>}></Route>
+                    <Route path='/admin' element={<AdminPage/>}></Route>
                   </Routes>
                 </BrowserRouter>
                 </div>

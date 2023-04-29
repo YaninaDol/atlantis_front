@@ -115,7 +115,7 @@ export default function StartPage(){
                              if(res.data.userRole[0]=="Admin")
                              {
                              
-                        
+                                window.location.href='/admin';
                              }
 
 
