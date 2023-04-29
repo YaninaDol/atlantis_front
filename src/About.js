@@ -22,10 +22,10 @@ import {
     MDBCardText,
     MDBCardGroup,
     MDBInput,
-    MDBFooter, MDBRow, MDBCol
+    MDBFooter, MDBRow, MDBCol, MDBTypography
   } from 'mdb-react-ui-kit';
 
-export default function News(){
+export default function About(){
     const responsive = {
         superLargeDesktop: {
           // the naming can be any, depends on you.
@@ -45,11 +45,11 @@ export default function News(){
           items: 1
         }
       };
-
     return(
         <div>
 
-            <header   style={{marginTop:110}}>
+
+               <header   style={{marginTop:110}}>
       <MDBNavbar    expand='lg' >
         <MDBContainer  className='Headercss' fluid>
           <MDBNavbarToggler
@@ -102,179 +102,150 @@ export default function News(){
     </header>
 
 
-            <Carousel  >
 
-            
-      <Carousel.Item active>
-        <img
-        height={900}
-          className="d-block w-100"
-          src="https://www.atlantis.com/scropper/-/screen/1920/atlantis/dubai/atr/atlantis-the-royal/grand-reveal/grandreveal-beyonce-mayyas-sun.jpg"
-          alt="First slide"
-        />
-        <Carousel.Caption>
-        
-        </Carousel.Caption>
-      </Carousel.Item>
-     
-      <Carousel.Item>
-        <img
-        height={900}
-          className="d-block w-100"
-          src='https://www.atlantis.com/scropper/-/screen/1920/atlantis/dubai/atr/atlantis-the-royal/grand-reveal/grandreveal-atr-fireworks-wide-v4.jpg'
-          alt="Third slide"
-        />
 
-      </Carousel.Item>
+    <div
+        className='p-5 text-center bg-image'
+        style={{ backgroundImage: "url('https://www.atlantis.com/scropper/-/screen/1920/atlantis/dubai/atr/atlantis-the-royal/resort/exterior/atr-resort-exterior-night-shot-960.jpg')", height: '500px' }}
+      >
+        <div className='mask' style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}>
+          <div className='d-flex justify-content-center align-items-center h-100'>
+            <div className='text-white'>
+            <h1 className='mainheader'>THIS IS THE MOST ULTRA-LUXURY EXPERIENTIAL RESORT IN THE WORLD</h1>
+              <span className='titleUnderline'></span>
 
-      <Carousel.Item>
-        <img
-          height={900}
-          className="d-block w-100"
-          src="https://www.atlantis.com/scropper/-/screen/1920/atlantis/dubai/atr/atlantis-the-royal/grand-reveal/grandreveal-kendalljenner-818-v5.jpg"
-          alt="Third slide"
-        />
+<h4 className="mainTitleText">The new iconic landmark of Dubai, Atlantis The Royal welcomes you to an experience that will completely redefine your perspective of luxury. Crafted by the world’s leading designers, architects and artists, this is a destination where everything has been designed to challenge the boundaries of imagination.</h4>
+<h4 className="mainTitleText">This is the place where something incredible happens at every moment of your stay.
 
-      </Carousel.Item>
-      <Carousel.Item>
-      <video
-      width={1490}
-      height={950}
-            className="slider-video "
-            src="https://www.atlantis.com/-/media/atlantis/dubai/atr/atlantis-the-royal/videos/grand-reveal/atr-grandreveal-herobanner.mp4"
-            loop
-            autoPlay
-            muted
-            loading="lazy"
-          ></video>
-      </Carousel.Item>
+This is Atlantis The Royal.
+</h4>
+      
+              <MDBBtn style={{marginTop:50}} href="/" outline color='light'  size="lg">
+                Book now
+              </MDBBtn>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style={{marginTop:100}} className='mainheader'>
+    <h2 class="mainTitle">THIS IS THE MOST ULTRA-LUXURY<br/> EXPERIENTIAL RESORT IN THE WORLD</h2>
+    <span className='titleUnderline'></span>
+    <div class="mainTitleText">
+      The new iconic landmark of Dubai, Atlantis The Royal welcomes you to an experience that will completely redefine
+      
+       your perspective of luxury. Crafted by the world’s leading designers, architects and artists, this is a destination where everything has been
+        designed to challenge the boundaries of imagination.
 
-    </Carousel>
+Be taken on a journey of the impossible, with artful masterpieces, iconic entertainment and beautiful
+ craftsmanship at every turn.
+Where the highest level of service sets a new standard in excellence.
 
+This is the place where something incredible happens at every moment of your stay.
+<br/>
+This is Atlantis The Royal. 
+
+</div>
+
+
+    </div>
 
     <div style={{marginTop:100}} className='mainheader'>
-    <h2 class="mainTitle">THIS IS DUBAI’S NEWEST ICON</h2>
-    <span className='titleUnderline'></span>
-    <div class="mainTitleText">
-    Atlantis The Royal set the stage for its Grand Reveal Weekend with an exclusive performance by global icon, Beyoncé. The resort unveiled itself to the world with a three-day star-studded weekend (20th-22nd January, 2023), where global celebrities and special guests from around the world came to celebrate the most ultra-luxury experiential resort in the world.
-
-</div>
-</div>
-
-
-<div>
-<video
-      width={1490}
-      height={950}
-            className="slider-video "
-            src="https://www.atlantis.com/-/media/atlantis/dubai/atr/atlantis-the-royal/videos/grand-reveal/grand-reveal-full-recap_lr.mp4"
-            loop
-            autoPlay
-            muted
-            loading="lazy"
-          ></video>
-</div>
-
-
-
-<div style={{marginTop:100}} className='mainheader'>
-    <h2 class="mainTitle">THIS IS PERFECTION PUTTING ON A SHOW</h2>
-    <span className='titleUnderline'></span>
-    <div class="mainTitleText">
-    Beyoncé lit up the stage after a 5-year hiatus with an awe-inspiring performance, accompanied by Firdaus, 
-    a 48-person orchestra. From the powerful choreography by Emmy-nominated Fatima Robinson, to the featured 
-    Mayyas dance group and a special duet with her daughter Blue Ivy, Beyoncé’s performance was unforgettable.
-     The song line-up included a soulful rendition of Etta James's "At Last," before diving into a medley of 
-     her greatest hits including "XO," "Halo," "Beautiful Liar," "Crazy in Love," "Naughty Girl," and "Drunk in Love".
-     <br/>
-     <br/>
-     In a breathtaking finale moment, Beyoncé was raised 16 feet into the air as a first-of-its kind fireworks display lit up the night sky using drones created by Grucci. To end the evening, guests celebrated into the morning hours with a live afterparty performance by the international DJ supergroup Swedish House Mafia.
-      A spectacle unlike anything the world has ever seen, Atlantis The Royal has made history.
-      <br/>
-    This Is It.
-</div>
-</div>
-
-<div style={{marginTop:100}}>
-<Carousels  responsive={responsive}>
-  <div style={{marginLeft:30,marginRight:30}}> 
-     <img
-        height={300}
-          src="https://www.atlantis.com/scropper/-/screen/992/atlantis/dubai/atr/atlantis-the-royal/grand-reveal/grandreveal-ad-fireworks.jpg"
-          alt="First slide"
-        />
-    </div>
-    <div style={{marginLeft:30,marginRight:30}}> 
-     <img
-        height={300}
-          src="https://www.atlantis.com/scropper/-/screen/992/atlantis/dubai/atr/atlantis-the-royal/grand-reveal/grandreveal-beyonce-yellowdress.jpg"
-          alt="First slide"
-        />
-    </div>
-    <div style={{marginLeft:30,marginRight:30}}> 
-     <img
-       height={300}
-          src="https://www.atlantis.com/scropper/-/screen/992/atlantis/dubai/atr/atlantis-the-royal/grand-reveal/grandreveal-beyonce-blueivy.jpg"
-          alt="First slide"
-        />
-    </div>
-    <div style={{marginLeft:30,marginRight:30}}> 
-     <img
-        height={300}
-          src="https://www.atlantis.com/scropper/-/screen/992/atlantis/dubai/atr/atlantis-the-royal/grand-reveal/grandreveal-beyonce-mayyas-pinkdress.jpg"
-          alt="First slide"
-        />
-    </div>
-    <div style={{marginLeft:30,marginRight:30}}> 
-     <img
-       height={300}
-          src="https://www.atlantis.com/scropper/-/screen/992/atlantis/dubai/atr/atlantis-the-royal/grand-reveal/grandreveal-beyonce-skyblaze-platform.jpg"
-          alt="First slide"
-        />
-    </div>
-    <div style={{marginLeft:30,marginRight:30}}> 
-     <img
-        height={300}
-          src="https://www.atlantis.com/scropper/-/screen/992/atlantis/dubai/atr/atlantis-the-royal/grand-reveal/grandreveal-building-fireworks-closeup.jpg"
-          alt="First slide"
-        />
-    </div>
-    <div style={{marginLeft:30,marginRight:30}}> 
-     <img
-        height={300}
-          src="https://www.atlantis.com/scropper/-/screen/992/atlantis/dubai/atr/atlantis-the-royal/grand-reveal/grandreveal-fireworks-palm.jpg"
-          alt="First slide"
-        />
-    </div>
-    <div style={{marginLeft:30,marginRight:30}}> 
-     <img
-        height={300}
-          src="https://www.atlantis.com/scropper/-/screen/992/atlantis/dubai/atr/atlantis-the-royal/grand-reveal/grandreveal-swedishhousemafia-fire.jpg"
-          alt="First slide"
-        />
-    </div>
-    <div style={{marginLeft:30,marginRight:30}}> 
-     <img
-         height={300}
-          src="https://www.atlantis.com/scropper/-/screen/992/atlantis/dubai/atr/atlantis-the-royal/grand-reveal/grandreveal-swedishhousemafia-closeup.jpg"
-          alt="First slide"
-        />
-    </div>
-
-</Carousels>;
-</div>
-
-<div style={{marginTop:100}} className='mainheader'>
     <h2 class="mainTitle">THE GRAND REVEAL WEEKEND</h2>
     <span className='titleUnderline'></span>
-    <div className='cartContainer'>
- <EventsCard pic='https://www.atlantis.com/scropper/-/screen/576/atlantis/dubai/atr/atlantis-the-royal/grand-reveal/grandreveal-atr-fireworks-side.jpg' header='Fireworks Extravaganza' text='The epic performance was followed by a spectacular fireworks and drone show, lighting up Dubai’s newest icon. As the fireworks settled, Swedish House Mafia took to the stage to perform hits, including “One” and “Don’t You Worry Child,” as guests celebrated until the early hours.' ></EventsCard>
- <EventsCard pic='https://www.atlantis.com/scropper/-/screen/576/atlantis/dubai/atr/atlantis-the-royal/grand-reveal/grandreveal-beyonce-mayyas-sun-v2.jpg' header='Beyoncé' text='The world’s most ultra-luxury resort was unveiled to the world with an exclusive 60-minute performance by global icon Beyoncé – her first live show since 2018.' ></EventsCard>
- <EventsCard pic='https://www.atlantis.com/scropper/-/screen/576/atlantis/dubai/atr/atlantis-the-royal/grand-reveal/kendalljenner-818-portrait.jpg' header='818 Afterparty' text='Guests vibed deep into the night at Cloud 22 with the launch of Kendall Jenner’s 818 Tequila, where they sipped on signature 818-inspired cocktails and danced to incredible DJ sets in this stunning open-air venue.' ></EventsCard>
-
-  </div>
+    <Carousels  responsive={responsive}>
+ <EventsCard pic='https://www.atlantis.com/scropper/-/screen/576/atlantis/dubai/atr/atlantis-the-royal/rooms-suites/suites/sky-pool-villa/interior/atr-sky-pool-villa-terrace-sunset.jpg' header='EXTRAORDINARY STAYS' text='An iconic address representing the epitome of luxury. Rooms, Suites and Signature Penthouses effortlessly fuse stylish interiors with infinite views.' ></EventsCard>
+ <EventsCard pic='https://www.atlantis.com/scropper/-/screen/576/atlantis/dubai/atr/atlantis-the-royal/restaurants/la-mar/food/la-mar-food-2.jpg' header='CULINARY MASTERY' text='Where the world’s most decorated chefs bring their individual mastery, let us serve you the extraordinary at Dubai’s premier dining destination.' ></EventsCard>
+ <EventsCard pic='https://www.atlantis.com/scropper/-/screen/576/atlantis/dubai/atr/atlantis-the-royal/restaurants/lingling/lifestyle/atr-ling-ling-lifestyle-nightlife.jpg' header='ICONIC NIGHTLIFE' text='The end of the night is just the beginning. The place to be and be seen, this is where you lose yourself to next level entertainment.' ></EventsCard>
+ <EventsCard pic='https://www.atlantis.com/scropper/-/screen/576/atlantis/dubai/atp/atlantis-aquaventure/dolphin-bay/lifestyle/dolphin-paddle-couple.jpg' header='INCREDIBLE ATTRACTIONS' text='Unleash your adventurous spirit or chill and unwind, Atlantis Aquaventure has something for everyone.' ></EventsCard>
+ <EventsCard pic='https://www.atlantis.com/scropper/-/screen/576/atlantis/dubai/atr/atlantis-the-royal/spa/interior/atr-awaken-treatment-room.jpg' header='TRANSFORMATIVE  WELLNESS' text='A truly different holistic spa and wellbeing experience designed to cleanse the body, clear the mind, lift the emotions and stir the spirit.' ></EventsCard>
+</Carousels>
+ {/* <EventsCard pic='' header='' text='' ></EventsCard> */}
+ 
 </div>
 
+
+<MDBContainer style={{marginTop:100}}>
+    <MDBCol md="5" style={{float:'left'}}>
+        <MDBRow >
+      
+        <h2 class="mainTitle">Awaken Wellness </h2>
+    <span className='titleUnderline'></span>
+   
+    AWAKEN is a truly different holistic spa and wellbeing experience inspired by the four elements of nature. This spectacular spa offers holistic therapies fused with modern technology and regenerative treatments that can only be found at AWAKEN. It features a Hammam Sensorium showcasing traditional therapies in a new light, a halotherapy salt room, snow fountain and a chromotherapy lounge.
+
+       
+        </MDBRow>
+    </MDBCol>
+
+    <MDBCol >
+    <MDBRow>
+        <MDBCardImage width={200} height={450} src='https://www.atlantis.com/scropper/-/screen/1200/atlantis/dubai/atr/atlantis-the-royal/spa/interior/atr-awaken-modern-hammam.jpg' alt='...'></MDBCardImage>
+        </MDBRow>
+    </MDBCol>
+</MDBContainer>
+
+
+<div style={{marginLeft:50, marginTop:100,backgroundColor:'ivory'}} className='mainheader'>
+    <h2 class="mainTitle">DUBAI’S PREMIER DINING DESTINATION</h2>
+    <span className='titleUnderline'></span>
+    <Carousels  responsive={responsive}>
+        <div   className='text-center'>
+        <MDBCard style={{width:300}}>
+      <MDBCardImage   width={30} height={350} src='https://www.atlantis.com/scropper/-/screen/576/atlantis/dubai/atp/restaurants/tra-chefs/ariana-bundy.jpg' position='top' alt='...' />
+      <MDBCardBody>
+        <MDBCardTitle className='mainheader'>Ariana’s Persian Kitchen</MDBCardTitle>
+        <MDBCardText>
+        TV personality Ariana Bundy launches her debut restaurant, serving authentic Persian cuisine with a modern and refined twist.
+        </MDBCardText>
+        <MDBBtn href='#' color="dark">RESERVE</MDBBtn>
+      </MDBCardBody>
+    </MDBCard>
+        </div>
+
+
+        <div   className='text-center'>
+        <MDBCard style={{width:300}}>
+      <MDBCardImage  width={30} height={350} src='https://www.atlantis.com/scropper/-/screen/576/atlantis/dubai/atp/restaurants/tra-chefs/jose-andres.jpg' position='top' alt='...' />
+      <MDBCardBody>
+        <MDBCardTitle className='mainheader'>Jaleo by José Andrés</MDBCardTitle>
+        <MDBCardText>
+        The brilliant James Beard-award winning chef José Andrés, showcases the rich cutting-edge flavours and flair of Spanish cuisine in a vibrant atmosphere.
+        </MDBCardText>
+        <MDBBtn href='#' color="dark">RESERVE</MDBBtn>
+      </MDBCardBody>
+    </MDBCard>
+        </div>
+
+        <div   className='text-center'>
+        <MDBCard style={{width:300}}>
+      <MDBCardImage  width={30} height={350} src='https://www.atlantis.com/scropper/-/screen/576/atlantis/dubai/atp/restaurants/tra-chefs/milos-by-costas-spiliadis.jpg' position='top' alt='...' />
+      <MDBCardBody>
+        <MDBCardTitle className='mainheader'>Estiatorio Milos by Costas Spiliadis</MDBCardTitle>
+        <MDBCardText>
+        Recognised as one of the finest Mediterranean seafood restaurants in the world, acclaimed  direct from the Greek isles.
+        </MDBCardText>
+        <MDBBtn href='#' color="dark">RESERVE</MDBBtn>
+      </MDBCardBody>
+    </MDBCard>
+        </div>
+
+        <div   className='text-center'>
+        <MDBCard style={{width:300}}>
+      <MDBCardImage src='https://www.atlantis.com/scropper/-/screen/576/atlantis/dubai/tra/restaurants/chef/michtuner-littlevenicecakecompany.jpg' width={30} height={350} position='top' alt='...' />
+      <MDBCardBody>
+        <MDBCardTitle className='mainheader'>Little Venice Cake Company By Mich Turner</MDBCardTitle>
+        <MDBCardText>
+        ‘Queen of Couture Cakes’, Mich Turner is a pioneer in the baking world, combining creativity and experience to create showstopping cakes and pastries.
+        </MDBCardText>
+        <MDBBtn href='#' color="dark">RESERVE</MDBBtn>
+      </MDBCardBody>
+    </MDBCard>
+        </div>
+
+ </Carousels>
+ {/* <EventsCard pic='' header='' text='' ></EventsCard> */}
+ 
+</div>
 
 <div>
 
@@ -434,12 +405,7 @@ export default function News(){
       </div>
     </MDBFooter>
 </div>
-        </div>
 
-
-
-
-
-
+            </div>
     )
 }

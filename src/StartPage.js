@@ -339,7 +339,7 @@ export default function StartPage(){
                 <MDBNavbarLink style={{color:'navy'}} to="/news" > <Link style={{color:'navy',textDecoration:'none'}} to="/news">News</Link></MDBNavbarLink>
               </MDBNavbarItem>
               <MDBNavbarItem>
-                <MDBNavbarLink style={{color:'navy'}} href='#'>About</MDBNavbarLink>
+                <MDBNavbarLink style={{color:'navy'}} href='/about'>About</MDBNavbarLink>
               </MDBNavbarItem>
 
               <MDBNavbarItem>
