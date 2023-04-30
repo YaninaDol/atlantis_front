@@ -94,7 +94,7 @@ import {
     const [active, setActive] = useState(1);
       const handleClick = (number) => {
         setActive(number);
-        
+       
       };
       const renderPageNumbers = () => {
         const pageNumbers = [];
@@ -1040,13 +1040,13 @@ axios (
 <nav aria-label='Page navigation example'>
       <MDBPagination  style={{marginLeft:650,marginTop:50}}  className='mb-0'>
       <MDBPaginationItem >
-          <MDBPaginationLink  style={{color:'gray'}} onClick={(e) =>{active>1? handleClick(active-1): e.preventDefault()}} aria-disabled='true'>
+          <MDBPaginationLink  style={{color:'gray'}} onClick={(e) =>{active>1? handleClick(active-1): e.preventDefault();renderpage()}} aria-disabled='true'>
             Previous
           </MDBPaginationLink>
         </MDBPaginationItem>
         {renderPageNumbers()}
         <MDBPaginationItem>
-          <MDBPaginationLink style={{color:'gray'}} onClick={(e) =>{active===indexOfLastItem? handleClick(active+1): e.preventDefault()}} aria-disabled='true'>
+          <MDBPaginationLink style={{color:'gray'}} onClick={(e) =>{active==indexOfLastItem? handleClick(active+1): e.preventDefault();renderpage()}} aria-disabled='true'>
             Next
           </MDBPaginationLink>
         </MDBPaginationItem>
