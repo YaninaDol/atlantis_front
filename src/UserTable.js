@@ -1,6 +1,10 @@
 import {MDBBtn,MDBInputGroup,MDBCheckbox , MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 import Table from 'react-bootstrap/Table';
 import Form from 'react-bootstrap/Form';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import {MDBNavbarItem} from 'mdb-react-ui-kit';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import UserTableItem from './UserTableItem';
@@ -16,6 +20,7 @@ export default function UserTable(){
     const [f,setF] = useState(0);
     const [users,setUsers]=useState([]);
     const [history,setHistory]=useState([]);
+    const [allhistory,setAllHistory]=useState([]);
 
     const [showOrder, setShowshowOrder] = useState(false);
 
@@ -111,6 +116,7 @@ export default function UserTable(){
         {
             console.log(res.data);
             setHistory(res.data);
+            setAllHistory(res.data);
             setF(1);
             
         });
@@ -366,6 +372,66 @@ function confirmPaidStatus()
     handleCloseshowOrder();
 }
 
+function ChooseStatus(value)
+{
+
+ 
+     
+     if(value!=0)
+   {
+     setHistory(allhistory.filter(item => item.status == value));
+    
+   }
+   else
+   {
+    setHistory(allhistory);
+      
+   }
+ 
+ 
+}
+
+function sortDate(value)
+{
+   if(value!='0')
+   {
+     if(value=='1')
+     {
+    
+       
+       setHistory(  allhistory
+         .slice()
+         .sort((a, b)=>{ 
+         var c = new Date(a.dateFisrt);
+         var d = new Date(b.dateFisrt);
+         return c-d;
+         }
+         ));
+     
+        
+     
+      
+     }
+     else
+     {
+      setHistory(  allhistory
+         .slice()
+         .sort((a, b)=>{ 
+          var c = new Date(b.dateFisrt);
+          var d = new Date(a.dateFisrt);
+          return c-d;
+          }
+          ));
+       
+     }
+   }
+   else
+   {
+      
+   }
+ 
+
+ }
 
     
     return(
@@ -543,6 +609,58 @@ REGISTER MENAGER
 <div hidden="">
 
 <h1 style={{marginLeft: 330}}>HISTORY OF ORDERS</h1>
+
+
+<div>
+
+<Navbar  bg="light" variant="dark">
+        <Container style={{marginLeft:200, marginTop:20}}>
+        
+          <Nav  className="me-auto">
+        
+
+          <MDBNavbarItem style={{marginLeft:-180}}>
+            <h6 style={{ color:'black'}}>Sort by</h6>
+            <select className="select p-2  bg-grey"  onChange={({ target: { value } }) => sortDate(value)} style={{ width: 'auto' }}>
+                      <option value='0'>By Date</option>
+                     
+                        <option  value='1'>
+                        Sort Oldest to Newest
+                        </option>
+                        <option  value='2'>
+                        Sort Newest to Oldest
+                        </option>
+                   
+                    </select>
+             
+            </MDBNavbarItem>
+
+          <MDBNavbarItem style={{marginLeft:630}}>
+            <h6 style={{ color:'black'}}>Filter by </h6>
+            <select className="select p-2  bg-grey"  onChange={({ target: { value } }) => ChooseStatus(value)} style={{ width: 'auto' }}>
+                      <option value="">All statuses</option>
+                        <option  value="new">New</option>
+                        <option  value="paid">Paid</option>
+                        <option  value="closed">Closed</option>
+                   
+                    </select>
+             
+            </MDBNavbarItem>
+          
+        
+           
+        
+            
+          </Nav>
+         
+         
+        </Container>
+      </Navbar>
+
+
+</div>
+
+
 <MDBTable>
 <MDBTableHead dark>
   <tr>
