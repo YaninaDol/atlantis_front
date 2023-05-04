@@ -5,6 +5,7 @@ import BookPage from "./BookPage";
 import News from "./News";
 import About from "./About";
 import AdminPage from "./AdminPage";
+import UserTable from "./UserTable";
 function App() {
   return (
       <div>
@@ -15,6 +16,7 @@ function App() {
                     <Route path='/news' element={<News/>}></Route>
                     <Route path='/about' element={<About/>}></Route>
                     <Route path='/admin' element={<AdminPage/>}></Route>
+                    <Route path='/usertable' element={<UserTable/>}></Route>
                   </Routes>
                 </BrowserRouter>
                 </div>
