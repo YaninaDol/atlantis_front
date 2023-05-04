@@ -432,6 +432,14 @@ function sortDate(value)
  
 
  }
+ //showTable
+
+function showTable(id)
+{
+
+  setHistory(allhistory.filter(item => item.userId == id));
+
+}
 
     
     return(
@@ -600,7 +608,7 @@ REGISTER MENAGER
 </MDBTableHead>
 <MDBTableBody >
  {
-  users.map((x)=> <UserTableItem id={x.id}  unic={x.id} name ={x.userName} email={x.email} remove={removebtn} update={updatebtn}></UserTableItem>)
+  users.map((x)=> <UserTableItem id={x.id} show={showTable} unic={x.id} name ={x.userName} email={x.email} remove={removebtn} update={updatebtn}></UserTableItem>)
  }
 </MDBTableBody>
 </MDBTable>

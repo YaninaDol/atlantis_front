@@ -11,8 +11,8 @@ import { MDBTable,MDBBtn, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
         return(
             <tr  >
                  <th  scope='row'></th>
-            <th  scope='row'>{this.props.unic}</th>
-            <td >{this.props.name}</td>
+            <th onClick={() => this.props.show(this.props.unic)}  scope='row'>{this.props.unic}</th>
+            <td onClick={() => this.props.show(this.props.unic)} >{this.props.name}</td>
             <td >{this.props.email}</td>
             <td onClick={() => this.props.remove(this.props.unic)}>
                  <MDBBtn    color='dark'> Delete </MDBBtn>
