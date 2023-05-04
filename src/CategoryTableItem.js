@@ -1,5 +1,6 @@
 import { MDBTable,MDBBtn, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
   import { Component } from "react";
+import { Button } from 'react-bootstrap';
 
   class CategoryTableItem extends Component{
     constructor(props){
@@ -14,9 +15,13 @@ import { MDBTable,MDBBtn, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
             <th onClick={() => this.props.show(this.props.unic)} scope='row'>{this.props.unic}</th>
             <td onClick={() => this.props.show(this.props.unic)}>{this.props.name}</td>
             <td onClick={() => this.props.show(this.props.unic)}> {this.props.bed} </td>
-             <td onClick={() => this.props.delete(this.props.unic)}> <MDBBtn   color='dark'>
+             <td onClick={() => this.props.delete(this.props.unic)}> <Button   variant='dark'>
                             Remove category
-                        </MDBBtn>
+                        </Button>
+                        </td>
+                        <td onClick={() => this.props.updateBtn(this.props.unic,this.props.name,this.props.bed)}> <Button  variant='dark'>
+                            Update category
+                        </Button>
                         </td>
           </tr>
         );
