@@ -312,7 +312,7 @@ function updateCategory()
 
 ///add Room
 
-//addCategory 
+//addRoom
 
 function addRoom()
 {
@@ -328,6 +328,7 @@ function addRoom()
   bodyFormData.append('Side', addRoomSide); 
   bodyFormData.append('Size', addRoomSize); 
   bodyFormData.append('Notice', addRoomNotice); 
+  bodyFormData.append('Price', addRoomPrice); 
 
  if(addRoomName!="" && addRoomPic1!="" && addRoomPic2!="" && addRoomPic3!="" && addRoomCategory!="0" && addRoomCategory!="" && addRoomCapacity!="" && addRoomDescription!="" && addRoomSide!="" && addRoomSide!="0" && addRoomSize!="" && addRoomNotice!="" )
 {

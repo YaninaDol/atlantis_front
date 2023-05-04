@@ -480,7 +480,7 @@ function confirmPaidStatus()
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Registration Admin</Modal.Title>
+          <Modal.Title>Registration Menager</Modal.Title>
         </Modal.Header>
         <Modal.Body>
     <MDBInputGroup className='mb-3' textBefore='Login'>
@@ -511,7 +511,7 @@ function confirmPaidStatus()
 </Button>
 
 <Button  style={{marginLeft:20}}  outline onClick={()=>handleShowAddA()} variant='dark'>
-REGISTER ADMIN
+REGISTER MENAGER
 </Button>
 
 </div>
