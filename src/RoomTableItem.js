@@ -19,7 +19,6 @@ import { Button } from 'react-bootstrap';
             <td ><img src={this.props.pic3} width={100} height={50} alt="..."/></td>
             <td > {this.props.category} </td>
             <td > {this.props.capacity} </td>
-            <td > {this.props.status} </td>
             <td > {this.props.description} </td>
             <td > {this.props.side} </td>
             <td > {this.props.views} </td>
@@ -27,10 +26,11 @@ import { Button } from 'react-bootstrap';
             <td > {this.props.notice} </td>
             <td > {this.props.price} </td>
 
+
              <td onClick={() => this.props.delete(this.props.unic)}>
-             <Button   variant='dark'> Remove category</Button> </td>
-              <td onClick={() => this.props.updateBtn(this.props.unic,this.props.name,this.props.bed)}>
-             <Button  variant='dark'>Update category </Button> </td>
+             <Button   variant='dark'> Remove item</Button> </td>
+              <td onClick={() => this.props.updateBtn(this.props.unic,this.props.name,this.props.pic1,this.props.pic2,this.props.pic3,this.props.capacity,this.props.description,this.props.size,this.props.notice,this.props.price,this.props.category,this.props.side)}>
+             <Button  variant='dark'>Update item </Button> </td>
           </tr>
         );
     }
