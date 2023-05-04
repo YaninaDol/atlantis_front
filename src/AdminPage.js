@@ -316,7 +316,7 @@ function updateCategory()
 
 function addRoom()
 {
-    
+   
     var bodyFormData = new FormData();
   bodyFormData.append('Name', addRoomName);
   bodyFormData.append('Picture1', addRoomPic1);
@@ -329,8 +329,8 @@ function addRoom()
   bodyFormData.append('Size', addRoomSize); 
   bodyFormData.append('Notice', addRoomNotice); 
 
-
-
+ if(addRoomName!="" && addRoomPic1!="" && addRoomPic2!="" && addRoomPic3!="" && addRoomCategory!="0" && addRoomCategory!="" && addRoomCapacity!="" && addRoomDescription!="" && addRoomSide!="" && addRoomSide!="0" && addRoomSize!="" && addRoomNotice!="" )
+{
               axios (
 
                 {
@@ -354,6 +354,9 @@ function addRoom()
                
             });  
 
+          }
+        
+          else alert("All fields requred!");
 
 
 }
@@ -587,7 +590,7 @@ function deleteRoombtn(id)
             <td > <MDBInputGroup className='mb-3' >
       <div className="mb-6 pb-2">
                 <select className="select p-2 rounded bg-grey" style={{ width: "100%" }} onChange={(e)=>setAddRoomCategory(e.target.value)}>
-                <option value={0}></option>
+                <option selected value="0"></option>
                       {
                       masCategories.map((x) => 
                         <option  value={x.id}>
@@ -605,7 +608,7 @@ function deleteRoombtn(id)
            <td >  <MDBInputGroup className='mb-3' >
       <div className="mb-6 pb-2">
                 <select className="select p-2 rounded bg-grey" style={{ width: "100%" }} onChange={(e)=>setAddRoomSide(e.target.value)}>
-                <option value={0}>Choose side</option>
+                <option selected value="0">Choose side</option>
                       {
                       sides.map((x) => 
                         <option  value={x.id}>
