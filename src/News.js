@@ -24,6 +24,7 @@ import {
     MDBInput,
     MDBFooter, MDBRow, MDBCol
   } from 'mdb-react-ui-kit';
+import { Button } from "react-bootstrap";
 
 export default function News(){
     const responsive = {
@@ -88,10 +89,10 @@ export default function News(){
         />
               </MDBNavbarItem>
               <MDBNavbarItem>
-              <MDBBtn className='bookbtn' href='/' lg color='light' style={{marginLeft:500,color:'DarkGoldenRod'}}>
+              <Button className='bookbtn' href='/' lg variant='light' style={{marginLeft:500,color:'DarkGoldenRod'}}>
 
         Book Now
-      </MDBBtn>
+      </Button>
               </MDBNavbarItem>
             </MDBNavbarNav>
           </MDBCollapse>

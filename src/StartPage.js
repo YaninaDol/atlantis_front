@@ -354,9 +354,9 @@ export default function StartPage(){
         />
               </MDBNavbarItem>
               <MDBNavbarItem>
-              <MDBBtn className='bookbtn' href='#booking' lg color='light' style={{marginLeft:500,color:'DarkGoldenRod'}}>
+              <Button className='bookbtn' href='#booking' lg variant='light' style={{marginLeft:500,color:'DarkGoldenRod'}}>
         Book Now
-      </MDBBtn>
+      </Button>
               </MDBNavbarItem>
             </MDBNavbarNav>
           </MDBCollapse>
@@ -529,7 +529,7 @@ This is Atlantis The Royal.
     </div>
  
   <div className='cartContainer'>
- <ShowRoomItem header='SIGNATURE SUITES' pic1='https://www.atlantis.com/scropper/-/screen/992/atlantis/dubai/tra/rooms/tra-interior-roomsrender.jpg' pic2='https://www.atlantis.com/scropper/-/screen/992/atlantis/dubai/tra/rooms/atlantistheroyal-interior-royalclub-royalclubsealounge.jpg' pic3='https://www.atlantis.com/scropper/-/screen/992/atlantis/dubai/tra/rooms/atlantistheroyal-royalclub-interior-bathrooms.jpg' text='Experience a rare kind of luxury unlike anywhere else, with expansive terraces decked with private pools and bedrooms made for royalty. Wake into a world of impossibilities made possible.'></ShowRoomItem>
+ <ShowRoomItem header='SIGNATURE SUITES' pic1='https://www.atlantis.com/scropper/-/screen/768/atlantis/dubai/atr/atlantis-the-royal/rooms-suites/guest-rooms/interior/atr-guestroom-seascape-queen-bedroom.jpg' pic2='https://www.atlantis.com/scropper/-/screen/992/atlantis/dubai/tra/rooms/atlantistheroyal-interior-royalclub-royalclubsealounge.jpg' pic3='https://www.atlantis.com/scropper/-/screen/992/atlantis/dubai/tra/rooms/atlantistheroyal-royalclub-interior-bathrooms.jpg' text='Experience a rare kind of luxury unlike anywhere else, with expansive terraces decked with private pools and bedrooms made for royalty. Wake into a world of impossibilities made possible.'></ShowRoomItem>
  <ShowRoomItem header='FAMILY APARTMENTS' pic1='https://www.atlantis.com/scropper/-/screen/1920/atlantis/dubai/tra/rooms/atlantistheroyal-suites-interior-skyterracesuite.jpg' pic2='https://www.atlantis.com/scropper/-/screen/1920/atlantis/dubai/tra/rooms/tra-interior-skyterracesuite-bathroom.jpg' pic3='https://www.atlantis.com/scropper/-/screen/992/atlantis/dubai/tra/rooms/atlantistheroyal-interior-royalclub-royalclubsealounge.jpg' text='The interconnecting Family Room is the perfect space for a group or family of up to four, complete with one king and two queen beds. Each bedroom features an en-suite bathroom, walk-in wardrobe and private balcony delivering endless views across the Palm Island or the Arabian Sea.'></ShowRoomItem>
  <ShowRoomItem header='ROYAL VILLAS' pic1='https://www.atlantis.com/scropper/-/screen/768/atlantis/dubai/atr/atlantis-the-royal/rooms-suites/suites/sky-pool-villa/interior/atr-sky-pool-villa-terrace-day.jpg' pic2='https://www.atlantis.com/scropper/-/screen/768/atlantis/dubai/atr/atlantis-the-royal/rooms-suites/suites/sky-pool-villa/interior/atr-sky-pool-villa-interior-bedroom.jpg' pic3='https://www.atlantis.com/scropper/-/screen/768/atlantis/dubai/atr/atlantis-the-royal/rooms-suites/suites/sky-pool-villa/interior/atr-sky-pool-villa-interior-bathroom.jpg' text='This dream-worthy Suite features an expansive terrace with outdoor seating for dining al fresco from morning to night, a private infinity pool and dining area.'></ShowRoomItem>
 

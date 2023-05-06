@@ -24,6 +24,7 @@ import {
     MDBInput,
     MDBFooter, MDBRow, MDBCol, MDBTypography
   } from 'mdb-react-ui-kit';
+import { Button } from "react-bootstrap";
 
 export default function About(){
     const responsive = {
@@ -88,10 +89,10 @@ export default function About(){
         />
               </MDBNavbarItem>
               <MDBNavbarItem>
-              <MDBBtn className='bookbtn' href='/' lg color='light' style={{marginLeft:500,color:'DarkGoldenRod'}}>
+              <Button className='bookbtn' href='/' lg variant='light' style={{marginLeft:500,color:'DarkGoldenRod'}}>
 
         Book Now
-      </MDBBtn>
+      </Button>
               </MDBNavbarItem>
             </MDBNavbarNav>
           </MDBCollapse>
@@ -120,9 +121,9 @@ export default function About(){
 This is Atlantis The Royal.
 </h4>
       
-              <MDBBtn style={{marginTop:50}} href="/" outline color='light'  size="lg">
+              <Button style={{marginTop:50}} href="/" outline variant='light'  size="lg">
                 Book now
-              </MDBBtn>
+              </Button>
             </div>
           </div>
         </div>
@@ -197,7 +198,7 @@ This is Atlantis The Royal.
         <MDBCardText>
         TV personality Ariana Bundy launches her debut restaurant, serving authentic Persian cuisine with a modern and refined twist.
         </MDBCardText>
-        <MDBBtn href='#' color="dark">RESERVE</MDBBtn>
+        <Button href='#' variant="dark">RESERVE</Button>
       </MDBCardBody>
     </MDBCard>
         </div>
@@ -211,7 +212,7 @@ This is Atlantis The Royal.
         <MDBCardText>
         The brilliant James Beard-award winning chef José Andrés, showcases the rich cutting-edge flavours and flair of Spanish cuisine in a vibrant atmosphere.
         </MDBCardText>
-        <MDBBtn href='#' color="dark">RESERVE</MDBBtn>
+        <Button href='#' variant="dark">RESERVE</Button>
       </MDBCardBody>
     </MDBCard>
         </div>
@@ -224,7 +225,7 @@ This is Atlantis The Royal.
         <MDBCardText>
         Recognised as one of the finest Mediterranean seafood restaurants in the world, acclaimed  direct from the Greek isles.
         </MDBCardText>
-        <MDBBtn href='#' color="dark">RESERVE</MDBBtn>
+        <Button href='#' variant="dark">RESERVE</Button>
       </MDBCardBody>
     </MDBCard>
         </div>
@@ -237,7 +238,7 @@ This is Atlantis The Royal.
         <MDBCardText>
         ‘Queen of Couture Cakes’, Mich Turner is a pioneer in the baking world, combining creativity and experience to create showstopping cakes and pastries.
         </MDBCardText>
-        <MDBBtn href='#' color="dark">RESERVE</MDBBtn>
+        <Button href='#' variant="dark">RESERVE</Button>
       </MDBCardBody>
     </MDBCard>
         </div>

@@ -11,6 +11,7 @@ import {
   MDBCardFooter
 } from 'mdb-react-ui-kit';
   import { Component } from "react";
+import { Button } from 'react-bootstrap';
 
   class showRoomsItem extends Component{
     constructor(props){
@@ -58,9 +59,9 @@ import {
               </MDBCardText>
            
             </MDBCardBody>
-            <MDBBtn className='bookbtn' href='#booking' lg color='light' style={{color:'DarkGoldenRod'}}>
+            <Button className='bookbtn' href='#booking' lg variant='light' style={{color:'DarkGoldenRod'}}>
         Book Now
-      </MDBBtn>
+      </Button>
           </MDBCard>
         );
     }
