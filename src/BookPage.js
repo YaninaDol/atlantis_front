@@ -819,7 +819,7 @@ axios (
         <img
         height={700}
           className="d-block w-100"
-          src="https://www.atlantis.com/scropper/-/screen/1920/atlantis/dubai/tra/rooms/atlantistheroyal-rooms-presidentialsuitegrandlivingroom.jpg"
+          src="https://www.atlantis.com/scropper/-/screen/1920/atlantis/dubai/atr/atlantis-the-royal/rooms-suites/signature-penthouse/skyscape-penthouse/interior/atr-skyscape-penthouse-terrace-view.jpg"
           alt="First slide"
         />
         <Carousel.Caption>
@@ -840,7 +840,7 @@ axios (
         <img
         height={700}
           className="d-block w-100"
-          src='https://www.atlantis.com/scropper/-/screen/1920/atlantis/dubai/tra/rooms/atlantistheroyal-stays-interior-bridgesuiteliving.jpg'
+          src='https://www.atlantis.com/scropper/-/screen/1920/atlantis/dubai/atr/atlantis-the-royal/rooms-suites/signature-penthouse/panoramic-penthouse/interior/atr-panoramic-penthouse-main-dining-room.jpg'
           alt="Third slide"
         />
 
@@ -851,7 +851,7 @@ axios (
           height={700}
           className="d-block w-100"
           src="https://www.atlantis.com/scropper/-/screen/1920/atlantis/dubai/tra/rooms/atlantis-the-royal_skyscape-penthouse_pool-view.jpg"
-          alt="Third slide"
+          alt="Four slide"
         />
 
       </Carousel.Item>
