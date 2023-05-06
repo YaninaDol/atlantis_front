@@ -186,7 +186,7 @@ This is Atlantis The Royal.
 </MDBContainer>
 
 
-<div style={{marginLeft:50, marginTop:100,backgroundColor:'ivory'}} className='mainheader'>
+<div style={{marginLeft:10, marginTop:100,backgroundColor:'ivory'}} className='mainheader'>
     <h2 class="mainTitle">DUBAI’S PREMIER DINING DESTINATION</h2>
     <span className='titleUnderline'></span>
     <Carousels  responsive={responsive}>
