@@ -470,46 +470,51 @@ axios (
       {
 
         if(FirstName!=""&&LastName!=""&&phoneNumber!="")
-       { for (const iterator of arrBasket) 
-        {
-       
-        var bodyFormData = new FormData();
+       { 
+        
+        if(phoneNumber.length==10 && FirstName.length>1 && LastName.length>5 )
+                  {    for (const iterator of arrBasket) 
+                      {
+                    
+                      var bodyFormData = new FormData();
 
-        bodyFormData.append('roomNumber',  iterator.id);
-        bodyFormData.append('Userid',  window.sessionStorage.getItem("UserId"));
-        bodyFormData.append('FirstName',  FirstName);
-        bodyFormData.append('LastName',  LastName);
-        bodyFormData.append('totaldays',  totalDays);
-        bodyFormData.append('Start',  startDate);
-        bodyFormData.append('End',endDate);
-        bodyFormData.append('phoneNumber', phoneNumber);
-        bodyFormData.append('notice',notice);
-        alert(notice);
-       
-        axios (
-  
-          {
-              method:'post',
-              url:'https://localhost:7271/api/RoomControllerCrud/Book',
-              data:bodyFormData,
-              headers: { 'Accept': 'text/plain', 'Content-Type': 'multipart/form-data',
-              'Authorization':'Bearer '+ window.sessionStorage.getItem("AccessToken") }
-  
-          }
-  
-  
-  
-      ).then  (res=>
-              {
-                      console.log(res);
-                      alert("You have successfully booked!");
-                      handleClose();
-    window.location.href = "/";
-                 
-              });
+                      bodyFormData.append('roomNumber',  iterator.id);
+                      bodyFormData.append('Userid',  window.sessionStorage.getItem("UserId"));
+                      bodyFormData.append('FirstName',  FirstName);
+                      bodyFormData.append('LastName',  LastName);
+                      bodyFormData.append('totaldays',  totalDays);
+                      bodyFormData.append('Start',  startDate);
+                      bodyFormData.append('End',endDate);
+                      bodyFormData.append('phoneNumber', phoneNumber);
+                      bodyFormData.append('notice',notice);
+                      alert(notice);
+                    
+                      axios (
+                
+                        {
+                            method:'post',
+                            url:'https://localhost:7271/api/RoomControllerCrud/Book',
+                            data:bodyFormData,
+                            headers: { 'Accept': 'text/plain', 'Content-Type': 'multipart/form-data',
+                            'Authorization':'Bearer '+ window.sessionStorage.getItem("AccessToken") }
+                
+                        }
+                
+                
+                
+                    ).then  (res=>
+                            {
+                                    console.log(res);
+                                    alert("You have successfully booked!");
+                                    handleClose();
+                  window.location.href = "/";
+                              
+                            });
 
-       
-      }
+                    
+                    }
+                  }
+                  alert("Data must be longer !");
       
        }
        else{
