@@ -122,7 +122,7 @@ import {
     
     
        var QRCode = require('qrcode')
-     var str=`https://www.ipay.ua/ru/charger?bill_id=1663&acc=021018496&invoice=${totalPrice}.00&order_id=100506`;
+     var str=`https://www.ipay.ua/ru/charger?bill_id=1663&acc=021018496&invoice=${totalPrice*10}.00&order_id=100506`;
        QRCode.toDataURL(str, function (err, url) {
         setPicture(url);
          console.log(url)
@@ -139,21 +139,23 @@ import {
 
 function pay()
 {
- setPayInfo('order_id=100506');
- setNotice(notice+payInfo);
+  setPayInfo('order_id=100506');
+  var notice_str=notice+payInfo;
+  setNotice(notice_str);
 
  handleCloseQr();
 }
 function payCard()
 {
  setPayInfo('order_id=100506');
- setNotice(notice+payInfo);
+ var notice_str=notice+payInfo;
+ setNotice(notice_str);
 
  handleClosePayCard();
 }
 
 
-    function checkavailablebtn()
+function checkavailablebtn()
     
     {
       var totalfirst=daysBetween(Date.now(), startDate);
@@ -482,7 +484,7 @@ axios (
         bodyFormData.append('End',endDate);
         bodyFormData.append('phoneNumber', phoneNumber);
         bodyFormData.append('notice',notice);
-        
+        alert(notice);
        
         axios (
   
@@ -520,16 +522,15 @@ axios (
 
       function bookbtn(id)
       {
-        setTotalDays( daysBetween(startDate,endDate));
+       
         
         if(isLogin==true)
             {
 
-              if(totalDays>1)
-              {setBookProduct(rooms.find(item => item.id == id));
+            
+              setBookProduct(rooms.find(item => item.id == id));
             handleShowM();
-              }
-              else{alert("You must book moore than 1 day!")};
+             
 
 
 
@@ -730,9 +731,9 @@ axios (
                       </MDBRow>
 
                       <MDBRow>
-                      <MDBBtn style={{marginTop:30}} onClick={payCard}  size="lg">
+                      <Button style={{marginTop:30}} onClick={payCard}  size="lg">
                         Proceed to payment 
-                      </MDBBtn>
+                      </Button>
                       </MDBRow>
 
                       </form>
