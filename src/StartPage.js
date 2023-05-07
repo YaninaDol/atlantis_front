@@ -194,9 +194,22 @@ export default function StartPage(){
     window.sessionStorage.setItem("EndDate",endDate);
     window.sessionStorage.setItem("Adult",adult);
     window.sessionStorage.setItem("Children",children);
+  var totalDays=daysBetween(Date.now(), startDate);
+  var daysbetween=daysBetween(startDate, endDate);
+    if(totalDays>1)
 
-
-    window.location.href = "/bookpage";
+    {
+      if(daysbetween>1)
+      {window.location.href = "/bookpage";
+      }
+      else
+      {
+        alert ("Your booking must be more than 1 night!");
+      }
+    
+    
+    }
+    else alert ("Incorrect start date!");
 
   }
   else
@@ -208,6 +221,16 @@ export default function StartPage(){
 
       }
 
+      function daysBetween(startDate, endDate) {
+        var millisecondsPerDay = 24 * 60 * 60 * 1000;
+        return (treatAsUTC(endDate) - treatAsUTC(startDate)) / millisecondsPerDay;
+    }
+
+    function treatAsUTC(date) {
+      var result = new Date(date);
+      result.setMinutes(result.getMinutes() - result.getTimezoneOffset());
+      return result;
+  }
     return(
             <div>
             

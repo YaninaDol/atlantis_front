@@ -275,7 +275,8 @@ function confirmAddAdmin()
       method:'post',
       url:'https://localhost:7271/api/Authenticate/regMenager',
       data: JSON.stringify({ UserName: UserLoginAddA, Password: userPasswordAddA,Email:userEmailAddA}), 
-      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json',
+      'Authorization':'Bearer '+ window.sessionStorage.getItem("AccessToken") },
      
       }
   

@@ -156,12 +156,15 @@ function payCard()
     function checkavailablebtn()
     
     {
+      var totalfirst=daysBetween(Date.now(), startDate);
+      var total= daysBetween(startDate,endDate);
       setTotalDays( daysBetween(startDate,endDate));
+
      // alert(totalDays);
   if(isLogin!=false)
   {
-
-                if(totalDays>1)
+        if(totalfirst>1)
+             {   if(total>1)
               {    var bodyFormData = new FormData();
                   bodyFormData.append('Start',  startDate);
                   bodyFormData.append('End', endDate);
@@ -190,6 +193,8 @@ function payCard()
                         });
                       }
                       else alert("You must book more than 1 day!");
+                    }
+                    else alert ("Incorrect start date!");
   }
   else
   {
