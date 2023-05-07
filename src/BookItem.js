@@ -11,6 +11,7 @@ import {
   MDBCardHeader
 } from 'mdb-react-ui-kit';
   import { Component } from "react";
+import { Button } from 'react-bootstrap';
 
   class BookItem extends Component{
     constructor(props){
@@ -104,9 +105,9 @@ import {
             Avg Price Per Room Per Night
             <h5> {this.props.price} AED</h5>
           </MDBCardText>
-          <MDBBtn onClick={() => this.props.book(this.props.unic)}  lg color='light' style={{backgroundColor:'DarkGoldenRod' ,color:'white',width:200, marginLeft:120}}>
+          <Button onClick={() => this.props.book(this.props.unic)}  lg variant='light' style={{backgroundColor:'DarkGoldenRod' ,color:'white',width:200, marginLeft:120}}>
         Book
-      </MDBBtn>
+      </Button>
         </MDBCardBody>
       </MDBCard>
      
