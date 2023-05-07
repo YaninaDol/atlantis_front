@@ -526,7 +526,9 @@ axios (
         
         if(isLogin==true)
             {
-
+              var total= daysBetween(startDate,endDate);
+              setTotalDays(total);
+        
             
               setBookProduct(rooms.find(item => item.id == id));
             handleShowM();
