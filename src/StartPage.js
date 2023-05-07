@@ -117,6 +117,11 @@ export default function StartPage(){
                              
                                 window.location.href='/admin';
                              }
+                             if(res.data.userRole[0]=="Menager")
+                             {
+                             
+                                window.location.href='/admin';
+                             }
 
 
                       })

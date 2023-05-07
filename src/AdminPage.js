@@ -104,7 +104,7 @@ export default function AdminPage(){
 
          {
          method:'get',
-         url:'https://localhost:7271/api/Room/GetRooms',
+         url:'https://localhost:7271/api/RoomControllerCrud/GetRooms',
          headers: {
                  'Authorization':'Bearer '+ window.sessionStorage.getItem("AccessToken")
          },
@@ -145,6 +145,17 @@ axios (
 
     }
  
+
+//logOut
+
+function logOut()
+{
+
+  window.sessionStorage.clear();
+  alert("See you next time");
+  window.location.href="/";
+}
+
 
 
     //deleteCategory
@@ -494,7 +505,9 @@ function deleteRoombtn(id)
 
 
 <h1 style={{marginLeft: 30}}>DASHBOARD OF CATEGORY & ROOMS</h1>
-<Button href="/usertable">GO TO USERTABLE </Button>
+
+<Button href="/usertable" style={{marginLeft: 10}}>GO TO USERTABLE </Button>
+<Button variant="outline-dark" onClick={logOut} style={{marginLeft: 1180}}>LOG OUT </Button>
 <MDBTable>
 <Button   variant='dark' onClick={(()=>setAddCategoryHide(""))}>
                            + Add new category
