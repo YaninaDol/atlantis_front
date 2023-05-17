@@ -514,7 +514,7 @@ axios (
                     
                     }
                   }
-                  alert("Data must be longer !");
+                  alert(" Please, write correct Data !");
       
        }
        else{
