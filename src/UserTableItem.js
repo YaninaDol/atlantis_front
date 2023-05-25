@@ -1,5 +1,6 @@
 import { MDBTable,MDBBtn, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
   import { Component } from "react";
+import { Button } from 'react-bootstrap';
 
   class UserTableItem extends Component{
     constructor(props){
@@ -15,10 +16,10 @@ import { MDBTable,MDBBtn, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
             <td onClick={() => this.props.show(this.props.unic)} >{this.props.name}</td>
             <td >{this.props.email}</td>
             <td onClick={() => this.props.remove(this.props.unic)}>
-                 <MDBBtn    color='dark'> Delete </MDBBtn>
+                 <Button    variant='dark'> Delete </Button>
              </td>
              <td onClick={() => this.props.update(this.props.unic)}>
-                 <MDBBtn   color='dark'> Update </MDBBtn>
+                 <Button   variant='dark'> Update </Button>
              </td>
           </tr>
         );

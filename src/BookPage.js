@@ -487,7 +487,7 @@ axios (
                       bodyFormData.append('End',endDate);
                       bodyFormData.append('phoneNumber', phoneNumber);
                       bodyFormData.append('notice',notice);
-                      alert(notice);
+                    
                     
                       axios (
                 
@@ -514,7 +514,7 @@ axios (
                     
                     }
                   }
-                  alert(" Please, write correct Data !");
+                else  alert(" Please, write correct Data !");
       
        }
        else{
